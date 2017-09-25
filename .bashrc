@@ -60,8 +60,8 @@ echo -e "${ESC_HI}";
 echo -e "---------------------- --   -";
 hostname
 echo -e "${ESC_RESET}";
-date
 echo $DISTRO
+date
 echo -e "\nstarting bash ${BASH_VERSION%.*}...";
 echo -e "${ESC_HI}---------------------- --   -";
 echo -e "${ESC_RESET}";
@@ -103,6 +103,7 @@ fi
 
 ## apps
 alias g="git"
+alias cdr='cd $(git rev-parse --show-cdup)' # cd to git root
 
 ## system
 alias md="mkdir"
