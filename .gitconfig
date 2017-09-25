@@ -35,7 +35,7 @@
   ca = commit --amend # careful
 	cm = commit -m
   d = diff --color-words
-	dh = diff --color-words head
+	dh = diff --color-words HEAD^
 #	l = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	ll = log --stat --abbrev-commit
