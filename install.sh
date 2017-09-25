@@ -4,11 +4,11 @@
 ## Symlinks .rc files into ~
 ## https://github.com/turnspike/ninjarc
 
-ESC_SEQ="\x1b["
-ESC_RESET=$ESC_SEQ"39;49;00m"
-ESC_GREEN=$ESC_SEQ"32;01m"
+ESC_SEQ="\x1b[" # color escape sequence
+ESC_RESET=$ESC_SEQ"39;49;00m" # reset to normal color
+ESC_HI=$ESC_SEQ"01;034m" # blue
 
-echo -e "$ESC_GREEN";
+echo -e "$ESC_HI";
 echo -e "---------------------- --   -";
 echo " installing ninjarc: "
 echo " super minimal .rc files for traipsing around Other People's Servers™"
