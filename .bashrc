@@ -50,7 +50,7 @@ export PS1="${MIN_COLOR}$(hr)\n${USER_COLOR}\u${NO_COLOR}${HI_COLOR}@\h${MIN_COL
 # if [ -f /etc/os-release ]
 DISTRO=""
 if [[ "$OSTYPE" == "linux-gnu" ]]; then # linux
-	DISTRO=lsb_release -a | grep Description: | sed -e 's/^.*:\W*//'
+	DISTRO="$(lsb_release -a | grep Description: | sed -e 's/^.*:\W*//')"
 	#DISTRO=lsb_release -ds 2>/dev/null || cat /etc/*release 2>/dev/null | head -n1 || uname -om
 elif [[ "$OSTYPE" == "darwin"* ]]; then # macos
   DISTRO="$(sw_vers -productVersion)"
