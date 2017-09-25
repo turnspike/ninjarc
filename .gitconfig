@@ -24,6 +24,7 @@
   changed = green
   untracked = cyan
 [alias]
+  b = branch
 	s = status
 	a = !git add . && git status
 	au = !git add -u . && git status

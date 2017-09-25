@@ -41,13 +41,10 @@ fi
 alias print-right="printf '%*s' $(tput cols)" # right align
 hr() { printf '\e(0'; printf 'q%.0s' $(seq $(tput cols)); printf '\e(B'; } # horizontal rule
 
-export PS1="${MIN_COLOR}$(hr)\n\w\n${USER_COLOR}\u${NO_COLOR}${HI_COLOR}@\h${MIN_COLOR} \342\210\264 ${NO_COLOR}"
-export PS1="${MIN_COLOR}$(hr)\n${USER_COLOR}\u${NO_COLOR}${HI_COLOR}@\h${MIN_COLOR} \w\n\342\210\264 ${NO_COLOR}"
-export PS1="${MIN_COLOR}$(hr)\n${USER_COLOR}\u${NO_COLOR}${HI_COLOR}@\h${MIN_COLOR} \w\n${HI_COLOR}\342\210\264 ${NO_COLOR}"
 export PS1="${MIN_COLOR}$(hr)\n${USER_COLOR}\u${NO_COLOR}${HI_COLOR}@\h${MIN_COLOR} \w\n${HI_COLOR}\342\210\264 ${NO_COLOR}"
 
 #-- detect distro
-# if [ -f /etc/os-release ]
+#TODO https://unix.stackexchange.com/a/6348
 DISTRO=""
 if [[ "$OSTYPE" == "linux-gnu" ]]; then # linux
 	DISTRO="$(lsb_release -a | grep Description: | sed -e 's/^.*:\W*//')"
@@ -85,6 +82,16 @@ shopt -s histappend # append to the history file, don't overwrite it
 # export HISTFILESIZE=2000
 shopt -s cmdhist ## fix for multiline commands
 
+#-- aliases
+
+## directories
+alias ..='cd ..'
+alias l='ls -CF'
+alias ll='ls -alF'
+alias la='ls -A'
+alias b="pushd ." # bookmark current directory
+alias r="popd" # return to previously bookmarked directory
+
 ## enable color support of ls and also add aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -93,17 +100,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
-
-#-- aliases
-
-## directories
-alias ..='cd ..'
-alias l='ls -CF'
-alias ll='ls -alF'
-alias la='ls -A'
-alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'' | less' # recursive ls
-alias b="pushd ." # bookmark current directory
-alias r="popd" # return to previously bookmarked directory
 
 ## apps
 alias g="git"
