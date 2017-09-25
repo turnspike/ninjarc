@@ -24,26 +24,27 @@
   changed = green
   untracked = cyan
 [alias]
-  b = branch
-	s = status
 	a = !git add . && git status
-	au = !git add -u . && git status
-	aa = !git add . && git add -u . && git status
-	c = commit
-	cm = commit -m
-	ca = commit --amend # careful
-	ac = !git add . && git commit
+  aa = !git add . && git add -u . && git status
+  ac = !git add . && git commit
 	acm = !git add . && git commit -m
+  alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+	au = !git add -u . && git status
+  b = branch
+	c = commit
+  ca = commit --amend # careful
+	cm = commit -m
+  d = diff --color-words
+	dh = diff --color-words head
 #	l = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	ll = log --stat --abbrev-commit
-	d = diff --color-words
-	dh = diff --color-words head
+  master = checkout master
 	p = push
+  preview = diff --stat --cached origin/master
+  s = status
+  stage = add
 	u = pull
-	master = checkout master
-	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
-	stage = add
 	unstage = reset
 	uncommit = reset --soft HEAD^
 
