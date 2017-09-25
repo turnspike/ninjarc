@@ -29,7 +29,7 @@ done; OPTIND=0
 filename="$DIR/.files"
 while read file; do
 
-  if [ ! -e $HOME/$file ]; then # file doesn't exist
+  if [ ! -e $HOME/$file ] && [ ! -L $HOME/$file ]; then # file doesn't exist
     echo "linking ~/$file"
     ln -s $DIR/$file $HOME
   elif [ -w $HOME/$file ] && [ $FORCE -eq 1 ]; then # file exists and force set, overwrite
