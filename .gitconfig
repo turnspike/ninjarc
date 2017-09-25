@@ -46,3 +46,6 @@
 	unstage = reset
 	uncommit = reset --soft HEAD^
 
+[user]
+	name = turnspike
+	email = hello@turnspike.com

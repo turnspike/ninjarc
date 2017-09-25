@@ -3,7 +3,7 @@
 ##| github.com/turnspike/ninjarc
 ##|
 
-# Source global definitions
+# source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
@@ -16,9 +16,9 @@ esac
 
 #-- define colors
 
-ESC_SEQ="\x1b["
-ESC_RESET=$ESC_SEQ"39;49;00m"
-ESC_GREEN=$ESC_SEQ"32;01m"
+ESC_SEQ="\x1b[" # start color sequence
+ESC_RESET=$ESC_SEQ"39;49;00m" # reset color
+ESC_HI=$ESC_SEQ"01;034m" # blue
 
 # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
@@ -48,7 +48,7 @@ export PS1="${MIN_COLOR}$(hr)\n${USER_COLOR}\u${NO_COLOR}${HI_COLOR}@\h${MIN_COL
 
 #-- display greeting
 
-echo -e "${ESC_GREEN}";
+echo -e "${ESC_HI}";
 echo -e "---------------------- --   -";
 hostname
 date
