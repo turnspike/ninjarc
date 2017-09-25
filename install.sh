@@ -32,13 +32,11 @@ while read file; do
   if [ ! -e $HOME/$file ] && [ ! -L $HOME/$file ]; then # file doesn't exist
     echo "linking ~/$file"
     ln -s $DIR/$file $HOME
-  elif [ -w $HOME/$file ] && [ $FORCE -eq 1 ]; then # file exists and force set, overwrite
+  elif [ -e $HOME/$file ] && [ $FORCE -eq 1 ]; then # file exists and force set, overwrite
     echo "overwriting ~/$file"
     ln -fs $DIR/$file $HOME
-  elif [ -w $HOME/$file ] && [ $FORCE -ne 1 ]; then # file exists and force not set, skip
+  else # file exists, skip
     echo "~/$file exists, skipping..."
-  else # file exists and is not writeable or other issue eg it's a directory
-    echo "couldn't write ~/$file, skipping"
   fi
 
 done < $filename
