@@ -46,15 +46,27 @@ export PS1="${MIN_COLOR}$(hr)\n${USER_COLOR}\u${NO_COLOR}${HI_COLOR}@\h${MIN_COL
 export PS1="${MIN_COLOR}$(hr)\n${USER_COLOR}\u${NO_COLOR}${HI_COLOR}@\h${MIN_COLOR} \w\n${HI_COLOR}\342\210\264 ${NO_COLOR}"
 export PS1="${MIN_COLOR}$(hr)\n${USER_COLOR}\u${NO_COLOR}${HI_COLOR}@\h${MIN_COLOR} \w\n${HI_COLOR}\342\210\264 ${NO_COLOR}"
 
+#-- detect distro
+# if [ -f /etc/os-release ]
+DISTRO=""
+if [[ "$OSTYPE" == "linux-gnu" ]]; then # linux
+	DISTRO=lsb_release -a | grep Description: | sed -e 's/^.*:\W*//'
+	#DISTRO=lsb_release -ds 2>/dev/null || cat /etc/*release 2>/dev/null | head -n1 || uname -om
+elif [[ "$OSTYPE" == "darwin"* ]]; then # macos
+  DISTRO="$(sw_vers -productVersion)"
+	DISTRO="MacOS $DISTRO"
+fi
+
 #-- display greeting
 
 echo -e "${ESC_HI}";
 echo -e "---------------------- --   -";
 hostname
+echo -e "${ESC_RESET}";
 date
-echo -e "----";
-echo -e "starting bash ${BASH_VERSION%.*}";
-echo -e "---------------------- --   -";
+echo $DISTRO
+echo -e "\nstarting bash ${BASH_VERSION%.*}...";
+echo -e "${ESC_HI}---------------------- --   -";
 echo -e "${ESC_RESET}";
 
 #-- general setings
