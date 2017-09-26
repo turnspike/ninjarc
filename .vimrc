@@ -1,11 +1,11 @@
-"----
-"---- Ninjarc: minimal vimrc
-"---- https://github.com/turnspike/ninjarc
-"----
+""|
+""| ninjarc vimrc config
+""| github.com/turnspike/ninjarc
+""|
 
 "-- TODO: each line should have a " reason
 
-"---- Environment ----
+"---- environment ----
 
 "-- tabs and spaces
 set tabstop=2
@@ -49,7 +49,7 @@ au BufNewFile,BufRead * setlocal formatoptions-=cro " no really, don't autocomme
 au FileType * set tabstop=2|set shiftwidth=2|set noexpandtab " default indenting
 
 "-- search and replace
-set gdefault " always use /g with %s/
+"set gdefault " always use /g with %s/
 set hlsearch " highlight search hits
 set incsearch "incremental search
 set wrapscan
@@ -57,7 +57,7 @@ set ignorecase
 set smartcase
 set infercase
 
-"---- Keybinds ----
+"---- keybinds ----
 "let mapleader = "\<space>"
 "let maplocalleader = "\<space>"
 
@@ -65,7 +65,7 @@ set infercase
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 
-"---- Display ----
-set number " show line numbers
+"---- display ----
+"set number " show line numbers
 colorscheme desert
 syntax on
