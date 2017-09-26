@@ -17,8 +17,11 @@ esac
 #-- define colors
 
 ESC_SEQ="\x1b[" # start color sequence
-ESC_RESET=$ESC_SEQ"39;49;00m" # reset color
+ESC_NO=$ESC_SEQ"39;49;00m" # reset color
 ESC_HI=$ESC_SEQ"01;034m" # blue
+
+alias print-right="printf '%*s' $(tput cols)" # right align
+hr() { printf '\e(0'; printf 'q%.0s' $(seq $(tput cols)); printf '\e(B'; } # horizontal rule
 
 ## set prompt colours
 # https://misc.flogisoft.com/bash/tip_colors_and_formatting
@@ -35,9 +38,6 @@ else
   C_USER=$C_NO;
 fi
 
-alias print-right="printf '%*s' $(tput cols)" # right align
-hr() { printf '\e(0'; printf 'q%.0s' $(seq $(tput cols)); printf '\e(B'; } # horizontal rule
-
 export PS1="$C_NO$C_DIM$(hr)\n$C_NO$C_USER\u$C_NO$C_HI@\h$C_NO$C_DIM \w\n$C_NO$C_HI\342\210\264 $C_NO"
 
 #-- detect distro
@@ -53,15 +53,12 @@ fi
 
 #-- display greeting
 
-echo -e "${ESC_HI}";
-echo -e "---------------------- --   -";
-hostname
-echo -e "${ESC_RESET}";
-echo $DISTRO
-date
-echo -e "\nstarting bash ${BASH_VERSION%.*}...";
-echo -e "${ESC_HI}---------------------- --   -";
-echo -e "${ESC_RESET}";
+echo -e $ESC_HI"\n"$(hr)
+echo -e $ESC_NO"ʕっ•ᴥ•ʔっ\t"$ESC_HI$(whoami)"@"$(hostname)
+echo -e $(hr)$ESC_NO;
+echo -e "\t\t"$DISTRO
+echo -e "\t\t"$(date)
+echo -e "\t\tstarting bash "${BASH_VERSION%.*}"...\n";
 
 #-- general setings
 
@@ -142,3 +139,6 @@ extract() {
         echo "'$1' is not a valid file"
     fi
 }
+
+## load fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
