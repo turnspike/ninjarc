@@ -35,6 +35,8 @@ Ninjarc will skip existing files by default. To force overwrite, run install.sh 
 ~/ninjarc/install.sh -f
 ````
 
+---
+
 # User Settings
 
 You might want to add your own user settings eg git username. Just:
@@ -96,7 +98,7 @@ di'hPl2x
 va':s/\%V'\%V/"/g
 ````
 
-**Quote all words in a line"**
+**Quote all words in a line**
 ````
 :s/\v(\S+)/"\1"/
 ````
