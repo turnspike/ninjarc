@@ -93,3 +93,8 @@ di'hPl2x
 ````
 va':s/\%V'\%V/"/g
 ````
+
+**Quote all words in a line"**
+````
+:s/\v(\S+)/"\1"/
+````
