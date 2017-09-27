@@ -45,7 +45,19 @@ cp -f ~/ninjarc/*.user ~
 Then edit to taste. This step can usually be ignored for ops work on random servers.
 
 ---
+# Bash notes
 
+List aliases:
+```sh
+alias
+```
+
+List non-OS functions:
+```sh
+list-funcs
+```
+
+---
 # Vim notes
 
 No plugins, mimimal config.
