@@ -102,3 +102,11 @@ va':s/\%V'\%V/"/g
 ````
 :s/\v(\S+)/"\1"/
 ````
+### Files
+
+* :e %%/ to edit file in same directory as current file
+
+### Buffers
+
+* ls to show buffers
+* :b <name><tab> to switch to buffer by name 
