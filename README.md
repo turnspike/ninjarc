@@ -5,9 +5,9 @@ Super minimal .rc files for traipsing around Other People's Servers™
 
 Get In And Get Out of some random server with color and comfort. Zero dependencies to install. No plugins.
 
-This is an experiment in minimalism as a response to my previous [https://github.com/turnspike/aetherwolf](plugin-heavy, super customized workflow). The only external tool used is [https://github.com/junegunn/fzf/](fuzzy-finder), which is portable.
+This is an experiment in minimalism as a response to my previous [plugin-heavy, super customized workflow](https://github.com/turnspike/aetherwolf). The only external tool used is [fuzzy-finder](https://github.com/junegunn/fzf/), which is portable.
 
-Another goal is to minimise friction when using Vim mode in various IDEs such as [http://spacemacs.org](Spacemacs) and [https://atom.io](Atom), which don't necessarily have particular Vim plugins available.
+Another goal is to minimise friction when using Vim mode in various IDEs such as [Spacemacs](http://spacemacs.org) and [Atom](https://atom.io), which don't necessarily have particular Vim plugins available.
 
 # Philosophy
 
