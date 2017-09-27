@@ -24,23 +24,23 @@ This is an experiment in minimalism as a response to my previous [plugin-heavy, 
 - Leader keys
 
 # Installation
-````
+```
 git clone https://github.com/turnspike/ninjarc.git ~/ninjarc && chmod u+x ~/ninjarc/install.sh && ~/ninjarc/install.sh
-````
+```
 
 Ninjarc will skip existing files by default. To force overwrite, run install.sh with the -f param:
-````
+```
 ~/ninjarc/install.sh -f
-````
+```
 
 ---
 
 # User Settings
 
 You might want to add your own user settings eg git username. Just:
-````
+```
 cp -f ~/ninjarc/*.user ~
-````
+```
 
 Then edit to taste. This step can usually be ignored for ops work on random servers.
 
@@ -62,7 +62,6 @@ No plugins, mimimal config.
 | **Uncomment several lines** | `<c-v>jjj` <br> `2x<esc>` |
 
 ### Quoting
-
 Yeah, I do miss surround.vim.
 
 | | |
