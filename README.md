@@ -56,6 +56,7 @@ The [Tim Pope](https://github.com/tpope) plugins are pretty hard to give up. I m
 
 ### Commenting
 Living without [vim-commentary](https://github.com/tpope/vim-commentary):
+
 | | |
 |-|-|
 | **Comment a single line** | `I// <Esc>` |
