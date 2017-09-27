@@ -108,5 +108,5 @@ va':s/\%V'\%V/"/g
 
 ### Buffers
 
-* ls to show buffers
-* :b <name><tab> to switch to buffer by name 
+* *ls* to show buffers
+* *:b <name><tab>* to switch to buffer by name 
