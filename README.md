@@ -24,12 +24,12 @@ This is an experiment in minimalism as a response to my previous [plugin-heavy, 
 - Leader keys
 
 # Installation
-```
+```sh
 git clone https://github.com/turnspike/ninjarc.git ~/ninjarc && chmod u+x ~/ninjarc/install.sh && ~/ninjarc/install.sh
 ```
 
 Ninjarc will skip existing files by default. To force overwrite, run install.sh with the -f param:
-```
+```sh
 ~/ninjarc/install.sh -f
 ```
 
@@ -38,7 +38,7 @@ Ninjarc will skip existing files by default. To force overwrite, run install.sh 
 # User Settings
 
 You might want to add your own user settings eg git username. Just:
-```
+```sh
 cp -f ~/ninjarc/*.user ~
 ```
 
@@ -52,8 +52,10 @@ No plugins, mimimal config.
 
 ## Living without plugins
 
-### Commenting
+The [Tim Pope](https://github.com/tpope) plugins are pretty hard to give up. I may cave on this in the future.
 
+### Commenting
+Living without [vim-commentary](https://github.com/tpope/vim-commentary):
 | | |
 |-|-|
 | **Comment a single line** | `I// <Esc>` |
@@ -62,7 +64,7 @@ No plugins, mimimal config.
 | **Uncomment several lines** | `<c-v>jjj` <br> `2x<esc>` |
 
 ### Quoting
-Yeah, I do miss surround.vim.
+Living without [vim-surround](https://github.com/tpope/vim-surround):
 
 | | |
 |-|-|
@@ -72,14 +74,19 @@ Yeah, I do miss surround.vim.
 | **Quote all words in a line** | `:s/\v(\S+)/"\1"/` |
 
 ### Files
+Living without [fzf.vim](https://github.com/junegunn/fzf.vim) and [NERDTree](https://github.com/scrooloose/nerdtree):
 
 | | |
 |-|-|
 | **Edit file in same directory as current file** | `:e %%/` |
 
 ### Buffers
+Also living without [fzf.vim](https://github.com/junegunn/fzf.vim):
 
 | | |
 |-|-|
 | **List buffers** | `ls` |
 | **Switch to buffer by name** | `:b <name><tab>` |
+
+### Version control
+There's no equivalent for [GitGutter](https://github.com/airblade/vim-gitgutter), so use `git diff`.
