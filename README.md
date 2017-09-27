@@ -52,7 +52,7 @@ No plugins, mimimal config.
 
 ## Living without plugins
 
-### How do I comment?
+### Commenting
 
 **Commenting a single line:**
 ````
@@ -75,7 +75,7 @@ I//<esc>
 <c-v>jjj
 2x<esc>
 ````
-### How do I quote/unquote?
+### Quoting
 
 Yeah, I do miss surround.vim.
 
