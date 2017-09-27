@@ -8,11 +8,11 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-## exit if running non-interactively
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+### exit if running non-interactively
+#case $- in
+#    *i*) ;;
+#      *) return;;
+#esac
 
 ## define colors
 ESC_SEQ="\x1b[" # start color sequence
