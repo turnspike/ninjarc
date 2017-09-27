@@ -1,16 +1,15 @@
-##| example bashrc user file
 
-if [[ "$OSTYPE" == "linux-gnu" ]]; then # linux
+##-- env config based on OS
 
-	## linuxy things
+if [[ "$OSTYPE" == "darwin"* ]]; then # macos
 
-elif [[ "$OSTYPE" == "darwin"* ]]; then # macos
+	## homebrew: https://brew.sh
+	export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH" # homebrew
 
-	export PATH="/usr/local/sbin:$PATH"
-	#export PATH="/usr/local/opt/sqlite/bin:$PATH"
+	## chruby: https://github.com/postmodern/chruby
+	source /usr/local/opt/chruby/share/chruby/chruby.sh # load chruby
+	source /usr/local/opt/chruby/share/chruby/auto.sh # autochange ruby version using .ruby-version
 
-	#---- ruby
-	source /usr/local/opt/chruby/share/chruby/chruby.sh
-	source /usr/local/opt/chruby/share/chruby/auto.sh
+#elif [[ "$OSTYPE" == "linux-gnu" ]]; then # linux
 
 fi
