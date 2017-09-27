@@ -24,89 +24,85 @@ This is an experiment in minimalism as a response to my previous [plugin-heavy, 
 - Leader keys
 
 # Installation
-````
+```sh
 git clone https://github.com/turnspike/ninjarc.git ~/ninjarc && chmod u+x ~/ninjarc/install.sh && ~/ninjarc/install.sh
-````
+```
 
 Ninjarc will skip existing files by default. To force overwrite, run install.sh with the -f param:
-````
+```sh
 ~/ninjarc/install.sh -f
-````
+```
 
 ---
 
 # User Settings
 
 You might want to add your own user settings eg git username. Just:
-````
+```sh
 cp -f ~/ninjarc/*.user ~
-````
+```
 
 Then edit to taste. This step can usually be ignored for ops work on random servers.
 
 ---
+# Bash notes
 
+List aliases:
+```sh
+alias
+```
+
+List non-OS functions:
+```sh
+list-funcs
+```
+
+---
 # Vim notes
 
 No plugins, mimimal config.
 
 ## Living without plugins
 
+The [Tim Pope](https://github.com/tpope) plugins are pretty hard to give up. I may cave on this in the future.
+
 ### Commenting
+Living without [vim-commentary](https://github.com/tpope/vim-commentary):
 
-**Commenting a single line:**
-````
-I// <Esc>
-````
+| | |
+|-|-|
+| **Comment a single line** | `I// <Esc>` |
+| **Uncomment a single line** | `^dw` |
+| **Comment several lines** | `<c-v>jjj` <br> `I//<esc>` |
+| **Uncomment several lines** | `<c-v>jjj` <br> `2x<esc>` |
 
-**Uncommenting a single line:**
-````
-^dw
-````
-
-**Commenting several lines:**
-````
-<c-v>jjj
-I//<esc>
-````
-
-**Uncommenting several lines:**
-````
-<c-v>jjj
-2x<esc>
-````
 ### Quoting
+Living without [vim-surround](https://github.com/tpope/vim-surround):
 
-Yeah, I do miss surround.vim.
+| | |
+|-|-|
+| **Quote a word** | `ciw'Ctrl+r"` <br> *or* <br> `ciw '' Esc P` |
+| **Unquote a word** | `di'hPl2x` |
+| **Change single quotes to double quotes** | `va':s/\%V'\%V/"/g` |
+| **Quote all words in a line** | `:s/\v(\S+)/"\1"/` |
 
-**Quote a word, using single quotes**
-````
-ciw'Ctrl+r"
-````
-or
-````
-ciw '' Esc P
-````
-
-**Unquote a word that's enclosed in single quotes**
-````
-di'hPl2x
-````
-
-**Change single quotes to double quotes**
-````
-va':s/\%V'\%V/"/g
-````
-
-**Quote all words in a line**
-````
-:s/\v(\S+)/"\1"/
-````
 ### Files
+Living without [fzf.vim](https://github.com/junegunn/fzf.vim) and [NERDTree](https://github.com/scrooloose/nerdtree):
 
-* :e %%/ to edit file in same directory as current file
+| | |
+|-|-|
+| **Edit file in same directory as current file** | `:e %%/` |
+| **Open file browser** | `:E` |
+| **Open file drawer** | `:Ve` |
+| **Close file browser** | `:bd` |
 
 ### Buffers
+Also living without [fzf.vim](https://github.com/junegunn/fzf.vim):
 
-* ls to show buffers
-* :b <name><tab> to switch to buffer by name 
+| | |
+|-|-|
+| **List buffers** | `ls` |
+| **Switch to buffer by name** | `:b <name><tab>` |
+
+### Version control
+There's no equivalent for [GitGutter](https://github.com/airblade/vim-gitgutter), so use `git diff`.
