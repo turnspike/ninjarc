@@ -24,7 +24,7 @@
   changed = green
   untracked = cyan
 [alias]
-	a = !git add . && git status
+	a = !git add
   aa = !git add . && git add -u . && git status
   ac = !git add . && git commit
 	acm = !git add . && git commit -m
