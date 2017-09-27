@@ -92,6 +92,8 @@ Living without [fzf.vim](https://github.com/junegunn/fzf.vim) and [NERDTree](htt
 | | |
 |-|-|
 | **Edit file in same directory as current file** | `:e %%/` |
+| **Open file browser** | `:E` |
+| **Close file browser** | `:bd` |
 
 ### Buffers
 Also living without [fzf.vim](https://github.com/junegunn/fzf.vim):
