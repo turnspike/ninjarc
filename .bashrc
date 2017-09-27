@@ -106,10 +106,11 @@ alias rd="rmdir"
 
 ##---- helper functions ----
 
-alias shell-name="ps -p $$"
-alias big-files="du -ah /home | sort -n -r | head -n 15"
-alias ssh-hosts="grep -w -i "Host" ~/.ssh/config | sed 's/Host//'"
+alias shell-name="ps -p $$" # display name of current shell
+#alias list-big-files="du -ah /home | sort -n -r | head -n 15" # list 15 largest files
+alias list-hosts="grep -w -i "Host" ~/.ssh/config | sed 's/Host//'" # list all hosts defined in .ssh/config
 alias dir-size="du -sh"
+alias list-funcs="typeset -F | grep -v '^declare -f _.*'" # list all user-defined functions
 
 ## find file with pattern in name
 function find-file() { find . -type f -iname '*'"$*"'*' -ls 2>/dev/null; }
