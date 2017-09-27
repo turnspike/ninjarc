@@ -76,10 +76,20 @@ I//<esc>
 ### How do I quote/unquote?
 
 **Quote a word, using single quotes**
+````
 ciw'Ctrl+r"
+````
+or
+````
+ciw '' Esc P
+````
 
 **Unquote a word that's enclosed in single quotes**
+````
 di'hPl2x
+````
 
 **Change single quotes to double quotes**
+````
 va':s/\%V'\%V/"/g
+````
