@@ -1,0 +1,16 @@
+##| example bashrc user file
+
+if [[ "$OSTYPE" == "linux-gnu" ]]; then # linux
+
+	## linuxy things
+
+elif [[ "$OSTYPE" == "darwin"* ]]; then # macos
+
+	export PATH="/usr/local/sbin:$PATH"
+	#export PATH="/usr/local/opt/sqlite/bin:$PATH"
+
+	#---- ruby
+	source /usr/local/opt/chruby/share/chruby/chruby.sh
+	source /usr/local/opt/chruby/share/chruby/auto.sh
+
+fi

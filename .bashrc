@@ -3,7 +3,7 @@
 ##| github.com/turnspike/ninjarc
 ##|
 
-## source global definitions
+## load global .bashrc
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
@@ -112,7 +112,7 @@ alias ssh-hosts="grep -w -i "Host" ~/.ssh/config | sed 's/Host//'"
 alias dir-size="du -sh"
 
 ## find file with pattern in name
-function find-file() { find . -type f -iname '*'"$*"'*' -ls ; }
+function find-file() { find . -type f -iname '*'"$*"'*' -ls 2>/dev/null; }
 
 ## create ZIP archive of a file or folder
 function zip-file() { zip -r "${1%%/}.zip" "$1" ; }
@@ -147,7 +147,8 @@ extract() {
 ## load ssh keys
 ## https://unix.stackexchange.com/a/217223
 echo -e $ESC_HI"loading ssh-agent"$ESC_NO
-if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+if [ ! -S ~/.ssh/ssh_auth_sock ]; then # only one instance of ssh-agent per session
+	echo "starting new instance of ssh-agent"
   eval `ssh-agent`
   ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
 fi
