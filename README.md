@@ -54,59 +54,35 @@ No plugins, mimimal config.
 
 ### Commenting
 
-**Commenting a single line:**
-````
-I// <Esc>
-````
+| | |
+|-|-|
+| **Comment a single line** | I// <Esc> |
+| **Uncomment a single line** | ^dw |
+| **Comment several lines** | <c-v>jjj <br> I//<esc> |
+| **Uncomment several lines** | <c-v>jjj <br> 2x<esc>|
 
-**Uncommenting a single line:**
-````
-^dw
-````
-
-**Commenting several lines:**
-````
-<c-v>jjj
-I//<esc>
-````
-
-**Uncommenting several lines:**
-````
-<c-v>jjj
-2x<esc>
-````
 ### Quoting
 
 Yeah, I do miss surround.vim.
 
-**Quote a word, using single quotes**
-````
-ciw'Ctrl+r"
-````
-or
-````
-ciw '' Esc P
-````
+| | |
+|-|-|
+| **Quote a word** | ciw'Ctrl+r" <br> OR <br> ciw '' Esc P |
+| **Unquote a word** | di'hPl2x |
+| **Change single quotes to double quotes** | va':s/\%V'\%V/"/g |
+| **Quote all words in a line** | :s/\v(\S+)/"\1"/ |
 
-**Unquote a word that's enclosed in single quotes**
-````
-di'hPl2x
-````
-
-**Change single quotes to double quotes**
-````
-va':s/\%V'\%V/"/g
-````
-
-**Quote all words in a line**
-````
-:s/\v(\S+)/"\1"/
-````
 ### Files
+
+| | |
+|-|-|
+| **Edit file in same directory as current file** | :e %%/ |
 
 * :e %%/ to edit file in same directory as current file
 
 ### Buffers
 
-* *ls* to show buffers
-* *:b <name><tab>* to switch to buffer by name 
+| | |
+|-|-|
+| **List buffers** | ls |
+| **Switch to buffer by name** | :b <name><tab> |
