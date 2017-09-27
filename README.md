@@ -11,16 +11,16 @@ Another goal is to minimise friction when using Vim mode in various IDEs such as
 
 # Philosophy
 
-Yes:
+**Yes:**
 - Speed
 - Simplicity
 - Small problem space, easy to hold in mind
 
-Minimal:
+**Minimal:**
 - Shortcuts to remember
 - Helper functions
 
-No:
+**No:**
 - Dependencies to install
 - Plugins
 - Leader keys
