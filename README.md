@@ -42,7 +42,7 @@ You might want to add your own user settings eg git username. Just:
 cp -f ~/ninjarc/*.user ~
 ````
 
-Then edit to taste. This step is not usually needed for general sysadmin work on random servers.
+Then edit to taste. This step can usually be ignored for ops work on random servers.
 
 ---
 
