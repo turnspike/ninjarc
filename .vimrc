@@ -26,16 +26,28 @@ set splitright " open vsplits right (defaults left)
 set backspace=indent,eol,start
 set nostartofline " preserve column on page movements
 autocmd InsertEnter,InsertLeave * set cul! " underline current line for insert mode only
-set nowrap " don't hard wrap at 80c
+
+" -- don't hard wrap or autoformat
+set nowrap
+set textwidth=0
+set linebreak
+"let &showbreak='▷ '
+"map F6 :se wrap! | echo &wrap
+"set wrap " soft wrap long lines 
+"set textwidth=0
+"set wrapmargin=0
+"set linebreak
+"set nolist " don't show hidden chars
+set formatoptions=l
 
 " -- timeouts (leader keys, esc)
 set ttimeout
 set ttimeoutlen=100
 
 " -- commandline
-set wildmenu
+set wildmenu " <tab> autocompletion in commandline
 set wildmode=list:longest,full " more linuxy filename completion with <tab>
-set wildignore+=*/tmp/*,*/.git/*,*.so,*.swp,*.zip
+set wildignore+=*/tmp/*,*/.git/*,*.so,*.swp,*.zip " exclude from <tab> completion
 set rtp+=~/.fzf " add fuzzy finder to runtime path
 
 " -- backups
@@ -46,7 +58,8 @@ set nowritebackup
 " -- filetypes
 set nocp
 filetype plugin indent on
-au FileType * setlocal formatoptions-=cro " don't autocomment newlines
+au FileType * setlocal formatoptions=1 " don't autoformat 
+"au FileType * setlocal formatoptions-=cro " don't autocomment newlines
 "au BufNewFile,BufRead * setlocal formatoptions-=cro " no really, don't autocomment newlines
 au FileType * set tabstop=2|set shiftwidth=2|set noexpandtab " default indenting
 
@@ -70,6 +83,19 @@ nnoremap <silent> k gk
 
 "" q will quit help buffer
 autocmd FileType help noremap <buffer> q :q<cr>
+
+" ---- file browser ----
+
+" https://shapeshed.com/vim-netrw/
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Vexplore
+"augroup END
 
 " ---- command shortcuts ----
 
