@@ -8,12 +8,6 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-### exit if running non-interactively
-#case $- in
-#    *i*) ;;
-#      *) return;;
-#esac
-
 ## define colors
 ESC_SEQ="\x1b[" # start color sequence
 ESC_NO=$ESC_SEQ"39;49;00m" # reset color
@@ -21,9 +15,24 @@ ESC_HI=$ESC_SEQ"01;034m" # blue
 
 ## pretty print functions
 alias print-right="printf '%*s' $(tput cols)" # right align
-hr() { printf '\e(0'; printf 'q%.0s' $(seq $(tput cols)); printf '\e(B'; } # horizontal rule
 
-##---- set prompt ----
+## FIXME tput cols doesn't update when term win resized on macos
+#export COLUMNS=$COLUMNS
+#unset COLUMNS
+#trap 'COLUMNS=$(COLUMNS= tput cols)' SIGWINCH
+#trap 'export COLUMNS=$(COLUMNS= tput cols)' SIGWINCH
+#function hr() { echo $(tput cols); echo "c"$1; printf '\e(0'; printf 'q%.0s' $(seq $COLUMNS); printf '\e(B'; } # horizontal rule
+#shopt -sq checkwinsize # check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
+#function hr() { printf %"$(stty size | awk '{print $2}')"s |tr " " "-"; }
+#PROMPT_COMMAND=hr
+#function hr() {
+#  local start=$'\e(0' end=$'\e(B' line='qqqqqqqqqqqqqqqq'
+#  local cols=${COLUMNS:-$(tput cols)}
+#  while ((${#line} < cols)); do line+="$line"; done
+#  printf '%s%s%s\n' "$start" "${line:0:cols}" "$end"
+#}
+
+function hr() { printf '\e(0'; printf 'q%.0s' $(seq $(tput cols)); printf '\e(B'; } # horizontal rule
 
 ## define prompt colours
 # https://misc.flogisoft.com/bash/tip_colors_and_formatting
@@ -40,7 +49,7 @@ fi
 
 ## apply prompt
 #export PS1="$C_NO$C_DIM$(hr)\n$C_NO$C_USER\u$C_NO$C_HI@\h$C_NO$C_DIM \w\n$C_NO$C_HI\342\210\264 $C_NO" # this is breaking <ctrl-r>
-export PS1="$C_NO$C_DIM$(hr)\n$C_NO$C_USER\u$C_NO$C_HI@\h$C_NO$C_DIM \w\n$C_NO$C_HI>$C_NO"
+export PS1="$C_NO$C_DIM$(hr)$COLUMNS\n$C_NO$C_USER\u$C_NO$C_HI@\h$C_NO$C_DIM \w\n$C_NO$C_HI>$C_NO"
 
 ##---- display greeting ----
 
@@ -67,7 +76,6 @@ export BLOCKSIZE=1k # set default blocksize for ls, df, du
 set completion-ignore-case On
 export XMLLINT_INDENT=" "
 export TERM=xterm-256color
-shopt -s checkwinsize # check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
 
 ##---- history settings ----
 
@@ -100,6 +108,7 @@ fi
 ## apps
 alias g="git"
 alias cdr='cd $(git rev-parse --show-cdup)' # cd to git root
+alias update-tags='cdr; ctags -R -f ./.git/tags .' # update tags for current git project
 
 ## system
 alias md="mkdir"
@@ -121,6 +130,9 @@ function zip-file() { zip -r "${1%%/}.zip" "$1" ; }
 
 ## apply default perms
 function fix-perms() { chmod -R u=rwX,g=rX,o= "$@" ; }
+
+## quote string for grep / regex
+#function quote-str() { sed 's/[]\.|$(){}?+*^]/\\&/g' <<< "$*" }
 
 ## extract any archive eg .zip
 extract() {
