@@ -111,6 +111,7 @@ cabbr <expr> %% expand('%:p:h')
 
 " -- typos
 command! Q :q
+command! W :w
 
 " ---- display ----
 "set number " show line numbers
