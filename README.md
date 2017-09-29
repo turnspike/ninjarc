@@ -111,4 +111,4 @@ There's no equivalent for [GitGutter](https://github.com/airblade/vim-gitgutter)
 # Known bugs
 
 * On MacOS, horizontal rules don't fit to new screen width when terminal is resized (tput cols is returning wrong value)
-* On RHEL, install.sh -f won't force overwrite; workaround is to rm the files in ~ first
+* On RHEL, install.sh -f won't force overwrite; workaround is to rm the relevant .rc files in ~ first
