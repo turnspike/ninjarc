@@ -8,12 +8,13 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-## define colors
+# define colors
 ESC_SEQ="\x1b[" # start color sequence
 ESC_NO=$ESC_SEQ"39;49;00m" # reset color
 ESC_HI=$ESC_SEQ"01;034m" # blue
 
 ## pretty print functions
+shopt -sq checkwinsize # check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
 alias print-right="printf '%*s' $(tput cols)" # right align
 
 ## FIXME tput cols doesn't update when term win resized on macos
@@ -22,7 +23,6 @@ alias print-right="printf '%*s' $(tput cols)" # right align
 #trap 'COLUMNS=$(COLUMNS= tput cols)' SIGWINCH
 #trap 'export COLUMNS=$(COLUMNS= tput cols)' SIGWINCH
 #function hr() { echo $(tput cols); echo "c"$1; printf '\e(0'; printf 'q%.0s' $(seq $COLUMNS); printf '\e(B'; } # horizontal rule
-#shopt -sq checkwinsize # check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
 #function hr() { printf %"$(stty size | awk '{print $2}')"s |tr " " "-"; }
 #PROMPT_COMMAND=hr
 #function hr() {
@@ -33,23 +33,24 @@ alias print-right="printf '%*s' $(tput cols)" # right align
 #}
 
 function hr() { printf '\e(0'; printf 'q%.0s' $(seq $(tput cols)); printf '\e(B'; } # horizontal rule
+#function hr() { foo=1; } # horizontal rule
 
 ## define prompt colours
 # https://misc.flogisoft.com/bash/tip_colors_and_formatting
-C_NO='\e[0m\]'; # normal
-C_DIM='\e[0;90m\]'; # dark gray
-C_HI='\e[1;34m\]'; # bold blue
+C_NO='\[\e[0m\]'; # normal
+C_DIM='\[\e[0;90m\]'; # dark gray
+C_HI='\[\e[1;34m\]'; # bold blue
 
 ## different prompt if root
 if [[ ${EUID} == 0 ]] ; then
-  C_USER='\e[101m\]'; # show root as bold background
+  C_USER='\[\e[101m\]'; # show root as bold background
 else
   C_USER=$C_NO;
 fi
 
 ## apply prompt
 #export PS1="$C_NO$C_DIM$(hr)\n$C_NO$C_USER\u$C_NO$C_HI@\h$C_NO$C_DIM \w\n$C_NO$C_HI\342\210\264 $C_NO" # this is breaking <ctrl-r>
-export PS1="$C_NO$C_DIM$(hr)\n$C_NO$C_USER\u$C_NO$C_HI@\h$C_NO$C_DIM \w\n$C_NO$C_HI>$C_NO"
+export PS1="$C_NO$C_DIM$(hr)$C_NO\n$C_USER\u$C_NO$C_HI@\h$C_NO $C_DIM\w$C_NO\n$C_HI>$C_NO"
 
 ##---- display greeting ----
 
@@ -80,10 +81,10 @@ export TERM=xterm-256color
 ##---- history settings ----
 
 export HISTCONTROL="ignoreboth" # don't put duplicate lines or lines starting with space in the history.
-export HISTIGNORE="&:ls:[bf]g:exit:l:ll" # ignore uninteresting commands
+export HISTIGNORE="&:ls:[bf]g:exit:l:ll:rm" # ignore uninteresting or dangerous commands
 shopt -s histappend # append to the history file, don't overwrite it
-# export HISTSIZE=1000 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-# export HISTFILESIZE=2000
+export HISTSIZE=1000 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+export HISTFILESIZE=2000
 shopt -s cmdhist ## fix for multiline commands
 
 ##---- aliases ----
