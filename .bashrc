@@ -90,9 +90,8 @@ shopt -s cmdhist ## fix for multiline commands
 
 ## directories
 alias ..='cd ..'
-alias l='ls -FhG'
-alias ll='l -a'
-alias la='l -al'
+alias l='ls -aFhG'
+alias ll='l -l'
 alias b="pushd ." # bookmark current directory
 alias r="popd" # return to previously bookmarked directory
 
