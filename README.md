@@ -106,3 +106,10 @@ Also living without [fzf.vim](https://github.com/junegunn/fzf.vim):
 
 ### Version control
 There's no equivalent for [GitGutter](https://github.com/airblade/vim-gitgutter), so use `git diff`.
+
+---
+# Known bugs
+
+* On MacOS, horizontal rules don't fit to new screen width when terminal is resized (tput cols is returning wrong value)
+
+* Horizontal rules don't fit to n
