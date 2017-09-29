@@ -80,12 +80,19 @@ export TERM=xterm-256color
 
 ##---- history settings ----
 
-export HISTCONTROL="ignoreboth" # don't put duplicate lines or lines starting with space in the history.
-export HISTIGNORE="&:ls:[bf]g:exit:l:ll:rm" # ignore uninteresting or dangerous commands
+## FIXME fzf doesn't seem to respect HISTIGNORE
+shopt -s histverify histreedit # load history substitute into readline rather than immediately executing
 shopt -s histappend # append to the history file, don't overwrite it
-export HISTSIZE=1000 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-export HISTFILESIZE=2000
-shopt -s cmdhist ## fix for multiline commands
+shopt -s cmdhist # fix for multiline commands
+#export HISTCONTROL=ignoredups:erasedups # don't put duplicate lines or lines starting with space in the history.
+export HISTCONTROL=ignoreboth # don't put duplicate lines or lines with leading spaces in the history. See bash(1) for more options
+export HISTSIZE=10000 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+export HISTFILESIZE=20000
+export HISTIGNORE='&:l:ll:ls:rm:[bf]g:exit:pwd:clear:mount:umount:history:*--help:[ \t]*:' # ignore uninteresting or dangerous commands
+
+## eternal bash history
+#export HISTTIMEFORMAT="%s "
+#PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $USER "$(history 1)" >> ~/.bash_eternal_history'
 
 ##---- aliases ----
 
@@ -179,3 +186,4 @@ if [ -f $HOME/.bashrc.user ]; then
 	echo -e $ESC_HI"loading user config"$ESC_NO
 	source $HOME/.bashrc.user
 fi
+
