@@ -64,7 +64,9 @@ No plugins, mimimal config.
 
 ## Living without plugins
 
-The [Tim Pope](https://github.com/tpope) plugins are pretty hard to give up. I may cave on this in the future.
+Particular plugins might not be available in an IDE's Vim mode, so to minimize friction they are not used here. The [Tim Pope](https://github.com/tpope) plugins are pretty hard to give up - I may cave on this in the future as they're somewhat available in [Spacemacs](https://spacemacs.org).
+
+Related video: [How to do 90% of what plugins do with just Vim](https://www.youtube.com/watch?v=XA2WjJbmmoM_)
 
 ### Commenting
 Living without [vim-commentary](https://github.com/tpope/vim-commentary):
@@ -91,6 +93,7 @@ Living without [fzf.vim](https://github.com/junegunn/fzf.vim) and [NERDTree](htt
 
 | | |
 |-|-|
+| **Fuzzyish file find** <br> will look in subdirs | `:f name*<tab>` <br> *or* <br> `:f *.ext<tab>` |
 | **Edit file in same directory as current file** | `:e %%/` |
 | **Open file browser** | `:E` |
 | **Open file drawer** | `:Ve` |
@@ -102,8 +105,10 @@ Also living without [fzf.vim](https://github.com/junegunn/fzf.vim):
 
 | | |
 |-|-|
-| **List buffers** | `ls` |
-| **Switch to buffer by name** | `:b <name><tab>` |
+| **Buffer list** | `:b <tab>` |
+| **Switch to buffer by name** | `:b partialname<tab>` <br> *or* <br> `:b <tab>partialname<tab>` |
+| **Cycle through all buffers** | `:b <tab><tab>` |
+| **List all buffers** | `ls` |
 
 ### Version control
 There's no equivalent for [GitGutter](https://github.com/airblade/vim-gitgutter), so use `git diff`.
