@@ -47,6 +47,7 @@ set backspace=indent,eol,start
 set nostartofline " preserve column on page movements
 
 augroup Cursor
+  autocmd!
   autocmd InsertEnter,InsertLeave * set cul! " underline current line for insert mode only
 augroup END
 
@@ -86,6 +87,7 @@ nnoremap <expr> k v:count == 0 ? 'gk' : 'k'
 "nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 augroup Keybinds
+  autocmd!
   "" q will quit help buffer
   autocmd FileType help noremap <buffer> q :q<cr>
 augroup END
