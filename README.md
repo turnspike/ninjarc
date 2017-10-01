@@ -95,6 +95,7 @@ Living without [fzf.vim](https://github.com/junegunn/fzf.vim) and [NERDTree](htt
 | **Open file browser** | `:E` |
 | **Open file drawer** | `:Ve` |
 | **Close file browser** | `:bd` |
+| **Revert current file** | `:e!` |
 
 ### Buffers
 Also living without [fzf.vim](https://github.com/junegunn/fzf.vim):
