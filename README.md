@@ -106,7 +106,7 @@ Also living without [fzf.vim](https://github.com/junegunn/fzf.vim):
 | | |
 |-|-|
 | **Buffer list** | `:b <tab>` |
-| **Switch to buffer by name** | `:b <name><tab>` <br> *or* <br> `:b <tab>partialname<tab>` |
+| **Switch to buffer by name** | `:b partialname<tab>` <br> *or* <br> `:b <tab>partialname<tab>` |
 | **Cycle through all buffers** | `:b <tab><tab>` |
 | **List all buffers** | `ls` |
 
