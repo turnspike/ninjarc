@@ -45,7 +45,10 @@ set splitright " open vsplits right (defaults left)
 " -- editing and cursor
 set backspace=indent,eol,start
 set nostartofline " preserve column on page movements
-autocmd InsertEnter,InsertLeave * set cul! " underline current line for insert mode only
+
+augroup Cursor
+  autocmd InsertEnter,InsertLeave * set cul! " underline current line for insert mode only
+augroup END
 
 " -- timeouts (leader keys, esc)
 set ttimeout
@@ -82,8 +85,10 @@ nnoremap <expr> k v:count == 0 ? 'gk' : 'k'
 "" select most recently edited/pasted text with gp
 "nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
-"" q will quit help buffer
-autocmd FileType help noremap <buffer> q :q<cr>
+augroup Keybinds
+  "" q will quit help buffer
+  autocmd FileType help noremap <buffer> q :q<cr>
+augroup END
 
 " ---- file browser ----
 
