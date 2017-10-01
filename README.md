@@ -64,7 +64,7 @@ No plugins, mimimal config.
 
 ## Living without plugins
 
-The [Tim Pope](https://github.com/tpope) plugins are pretty hard to give up. I may cave on this in the future.
+Particular plugins might not be available in an IDE's Vim mode, so to minimize friction they are not used here. The [Tim Pope](https://github.com/tpope) plugins are pretty hard to give up - I may cave on this in the future as they're somewhat available in [Spacemacs](https://spacemacs.org).
 
 ### Commenting
 Living without [vim-commentary](https://github.com/tpope/vim-commentary):
