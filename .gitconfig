@@ -31,6 +31,7 @@
   alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
 	au = !git add -u . && git status
   b = branch
+  br = ls-remote --heads origin # list all remote branches
 	c = commit
   ca = commit --amend # careful
 	cm = commit -m
