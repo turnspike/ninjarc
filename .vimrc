@@ -135,5 +135,5 @@ au FileType * setlocal formatoptions-=cro " don't autocomment newlines
 " ---- display ----
 "set number " show line numbers
 colorscheme desert
-set belloff=all " no bell
+set noerrorbells " no bell
 syntax enable " enable syntax highlighting
