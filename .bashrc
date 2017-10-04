@@ -32,7 +32,6 @@ alias print-right="printf '%*s' $(tput cols)" # right align
 #  printf '%s%s%s\n' "$start" "${line:0:cols}" "$end"
 #}
 
-function hr() { printf '\e(0'; printf 'q%.0s' $(seq $(tput cols)); printf '\e(B'; } # horizontal rule
 #function hr() { foo=1; } # horizontal rule
 
 ## define prompt colours
@@ -47,6 +46,17 @@ if [[ ${EUID} == 0 ]] ; then
 else
   C_USER=$C_NO;
 fi
+
+## draw horizontal rule
+function hr() {
+
+  if ! [ -z $INSIDE_EMACS ]; then # shell is running inside emacs
+    echo -e " ";
+  else # normal shell
+    printf '\e(0'; printf 'q%.0s' $(seq $(tput cols)); printf '\e(B';
+  fi
+
+}
 
 ## apply prompt
 #export PS1="$C_NO$C_DIM$(hr)\n$C_NO$C_USER\u$C_NO$C_HI@\h$C_NO$C_DIM \w\n$C_NO$C_HI\342\210\264 $C_NO" # this is breaking <ctrl-r>
