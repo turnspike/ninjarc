@@ -84,8 +84,14 @@ set infercase
 nnoremap <expr> j v:count == 0 ? 'gj' : 'j'
 nnoremap <expr> k v:count == 0 ? 'gk' : 'k'
 
-"" select most recently edited/pasted text with gp
-"nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+" select most recently edited/pasted text with gp
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+" exit insert mode with <jk>
+imap <silent> jk <esc>
+
+" allowance for spacemacs muscle memory
+nnoremap <space>fs :w<cr>
 
 augroup Keybinds
   autocmd!
@@ -121,16 +127,19 @@ command! FilePath :echo resolve(expand('%:p')) " display path of current file
 cabbr <expr> %% expand('%:p:h')
 
 " -- typos
-command! Q :q
-command! W :w
-
+cnoreabbrev W w
+cnoreabbrev X x
+cnoreabbrev Q q
 
 " -- filetypes
 filetype plugin indent on
-au FileType * setlocal formatoptions=1 " don't autoformat 
-au FileType * setlocal formatoptions-=cro " don't autocomment newlines
-"au BufNewFile,BufRead * setlocal formatoptions-=cro " no really, don't autocomment newlines
-"au FileType * set tabstop=2|set shiftwidth=2|set noexpandtab " default indenting
+augroup Filetypes
+  autocmd!
+  autocmd FileType * setlocal formatoptions=1 " don't autoformat 
+  autocmd FileType * setlocal formatoptions-=cro " don't autocomment newlines
+  "au BufNewFile,BufRead * setlocal formatoptions-=cro " no really, don't autocomment newlines
+  "au FileType * set tabstop=2|set shiftwidth=2|set noexpandtab " default indenting
+augroup END
 
 " ---- display ----
 "set number " show line numbers
