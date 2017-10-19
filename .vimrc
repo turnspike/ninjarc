@@ -92,6 +92,7 @@ imap <silent> jk <esc>
 
 " allowance for spacemacs muscle memory
 nnoremap <space>fs :w<cr>
+nnoremap <space>qq :wq<cr>
 
 augroup Keybinds
   autocmd!
