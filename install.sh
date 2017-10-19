@@ -48,11 +48,26 @@ while read file; do
 
 done < $filename
 
-## install fzf as it is portable
+## TODO make these git submodules
+
+## install fzf
 print-h "installing fuzzyfinder fzf..."
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+cd ~/.fzf; git pull
 ~/.fzf/install --key-bindings --completion --no-update-rc
 echo "use <c-t>, <c-r>, <alt-c> to fuzzy find in shell"
+
+## install bashmarks
+print-h "installing bashmarks..."
+git clone git://github.com/turnspike/bashmarks.git ~/.bashmarks
+cd ~/.bashmarks; git pull
+make install
+
+## install enhancd
+print-h "installing enhancd..."
+git clone https://github.com/b4b4r07/enhancd ~/.enhancd
+cd ~/.enhancd; git pull
+
 ## install vim plugins
 ##vim +PlugInstall +qall
 

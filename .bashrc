@@ -62,7 +62,7 @@ function hr() {
 #export PS1="$C_NO$C_DIM$(hr)\n$C_NO$C_USER\u$C_NO$C_HI@\h$C_NO$C_DIM \w\n$C_NO$C_HI\342\210\264 $C_NO" # this is breaking <ctrl-r>
 export PS1="$C_NO$C_DIM$(hr)$C_NO\n$C_USER\u$C_NO$C_HI@\h$C_NO $C_DIM\w$C_NO\n$C_HI>$C_NO"
 
-##---- display greeting ----
+## ---- display greeting ----
 
 ## detect distro
 ## TODO https://unix.stackexchange.com/a/6348
@@ -81,30 +81,30 @@ echo -e "\t\t"$DISTRO
 echo -e "\t\t"$(date)
 echo -e "\t\tstarting bash "${BASH_VERSION%.*}"...\n";
 
-##---- general setings ----
+## ---- general settings ----
 
 export BLOCKSIZE=1k # set default blocksize for ls, df, du
 set completion-ignore-case On
 export XMLLINT_INDENT=" "
 export TERM=xterm-256color
 
-##---- history settings ----
+## ---- history settings ----
 
 ## FIXME fzf doesn't seem to respect HISTIGNORE
-shopt -s histverify histreedit # load history substitute into readline rather than immediately executing
+#shopt -s histverify histreedit # load history substitute into readline rather than immediately executing
 shopt -s histappend # append to the history file, don't overwrite it
 shopt -s cmdhist # fix for multiline commands
 #export HISTCONTROL=ignoredups:erasedups # don't put duplicate lines or lines starting with space in the history.
 export HISTCONTROL=ignoreboth # don't put duplicate lines or lines with leading spaces in the history. See bash(1) for more options
 export HISTSIZE=10000 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 export HISTFILESIZE=20000
-export HISTIGNORE='&:l:ll:ls:rm:[bf]g:exit:pwd:clear:mount:umount:history:*--help:[ \t]*:' # ignore uninteresting or dangerous commands
+export HISTIGNORE='&:l:ll:ls:rm:[bf]g:exit:pwd:clear:mount:umount' # ignore uninteresting or dangerous commands
 
 ## eternal bash history
 #export HISTTIMEFORMAT="%s "
 #PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $USER "$(history 1)" >> ~/.bash_eternal_history'
 
-##---- aliases ----
+## ---- aliases ----
 
 ## directories
 alias ..='cd ..'
@@ -124,6 +124,7 @@ fi
 
 ## apps
 alias g="git"
+alias cdh='cd ~' # cd is overwritten by enhancd so use cdh to get to home dir quickly
 alias cdr='cd $(git rev-parse --show-cdup)' # cd to git root
 alias update-tags='cdr; ctags -R -f ./.git/tags .' # update tags for current git project
 
@@ -131,7 +132,7 @@ alias update-tags='cdr; ctags -R -f ./.git/tags .' # update tags for current git
 alias md="mkdir"
 alias rd="rmdir"
 
-##---- helper functions ----
+## ---- helper functions ----
 
 alias shell-name="ps -p $$" # display name of current shell
 #alias list-big-files="du -ah /home | sort -n -r | head -n 15" # list 15 largest files
@@ -173,9 +174,9 @@ extract() {
     fi
 }
 
-##---- helper apps ----
+## ---- helper apps ----
 
-## load ssh keys
+## -- load ssh keys
 ## https://unix.stackexchange.com/a/217223
 echo -e $ESC_HI"loading ssh-agent"$ESC_NO
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then # only one instance of ssh-agent per session
@@ -186,14 +187,30 @@ fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add
 
-## load fzf
-## https://github.com/junegunn/fzf
+## -- load fzf
+##    https://github.com/junegunn/fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-##---- user config ----
+## -- load enhancd
+##    https://github.com/b4b4r07/enhancd
+export ENHANCD_FILTER=fzf;
+export ENHANCD_DISABLE_DOT=1;
+export ENHANCD_HOOK_AFTER_CD="l";
+[ -f ~/.enhancd/init.sh ] && source ~/.enhancd/init.sh
+
+## -- load bashmarks
+##    https://github.com/turnspike/bashmarks
+export BASHMARKS_PREFIX="b";
+if [ -f ~/.bashmarks/bashmarks.sh ]; then
+    source ~/.bashmarks/bashmarks.sh
+    alias ${BASHMARKS_PREFIX}a="bashmarks_s"
+    alias ${BASHMARKS_PREFIX}j="bashmarks_g"
+    alias ${BASHMARKS_PREFIX}e="bashmarks_p"
+fi
+
+## ---- user config ----
 
 if [ -f $HOME/.bashrc.user ]; then
 	echo -e $ESC_HI"loading user config"$ESC_NO
 	source $HOME/.bashrc.user
 fi
-
