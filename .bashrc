@@ -124,7 +124,6 @@ fi
 
 ## apps
 alias g="git"
-alias cdh='cd ~' # cd is overwritten by enhancd so use cdh to get to home dir quickly
 alias cdr='cd $(git rev-parse --show-cdup)' # cd to git root
 alias update-tags='cdr; ctags -R -f ./.git/tags .' # update tags for current git project
 
@@ -207,6 +206,10 @@ if [ -f ~/.bashmarks/bashmarks.sh ]; then
     alias ${BASHMARKS_PREFIX}j="bashmarks_g"
     alias ${BASHMARKS_PREFIX}e="bashmarks_p"
 fi
+
+## -- git tab completion
+##    https://apple.stackexchange.com/a/55886
+[ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
 
 ## ---- user config ----
 
