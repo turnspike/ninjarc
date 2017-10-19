@@ -68,6 +68,9 @@ print-h "installing enhancd..."
 git clone https://github.com/b4b4r07/enhancd ~/.enhancd
 cd ~/.enhancd; git pull
 
+## install git tab completion
+curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+
 ## install vim plugins
 ##vim +PlugInstall +qall
 
