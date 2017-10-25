@@ -125,6 +125,7 @@ fi
 ## apps
 alias g="git"
 alias cdr='cd $(git rev-parse --show-cdup)' # cd to git root
+alias cdh='cd ~' # cd is overwritten by enhancd
 alias update-tags='cdr; ctags -R -f ./.git/tags .' # update tags for current git project
 
 ## system
