@@ -4,11 +4,20 @@
 if [[ "$OSTYPE" == "darwin"* ]]; then # macos
 
 	## homebrew: https://brew.sh
-	export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH" # homebrew
+	export PATH="/usr/local/bin:/usr/local/sbin:~/bin:~/bin/flinders:$PATH" # homebrew
 
 	## chruby: https://github.com/postmodern/chruby
+	## brew install chruby ruby-install
+	## ruby-install 2.4.1 
 	source /usr/local/opt/chruby/share/chruby/chruby.sh # load chruby
 	source /usr/local/opt/chruby/share/chruby/auto.sh # autochange ruby version using .ruby-version
+	#chruby ruby-2.4.1
+
+  ## bash completion
+  ##  [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+  [ -f $(brew --prefix)/etc/bash_completion ] && . $(brew --prefix)/etc/bash_completion
+
+	alias vim="/usr/bin/vim" # use system vim
 
 #elif [[ "$OSTYPE" == "linux-gnu" ]]; then # linux
 
