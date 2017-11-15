@@ -62,7 +62,7 @@ function hr() {
 #export PS1="$C_NO$C_DIM$(hr)\n$C_NO$C_USER\u$C_NO$C_HI@\h$C_NO$C_DIM \w\n$C_NO$C_HI\342\210\264 $C_NO" # this is breaking <ctrl-r>
 export PS1="$C_NO$C_DIM$(hr)$C_NO\n$C_USER\u$C_NO$C_HI@\h$C_NO $C_DIM\w$C_NO\n$C_HI>$C_NO"
 
-## ---- display greeting ----
+## ---- DISPLAY GREETING ----
 
 ## detect distro
 ## TODO https://unix.stackexchange.com/a/6348
@@ -81,14 +81,14 @@ echo -e "\t\t"$DISTRO
 echo -e "\t\t"$(date)
 echo -e "\t\tstarting bash "${BASH_VERSION%.*}"...\n";
 
-## ---- general settings ----
+## ---- GENERAL SETTINGS ----
 
 export BLOCKSIZE=1k # set default blocksize for ls, df, du
 set completion-ignore-case On
 export XMLLINT_INDENT=" "
 export TERM=xterm-256color
 
-## ---- history settings ----
+## ---- HISTORY SETTINGS ----
 
 ## FIXME fzf doesn't seem to respect HISTIGNORE
 #shopt -s histverify histreedit # load history substitute into readline rather than immediately executing
@@ -104,7 +104,7 @@ export HISTIGNORE='&:l:ll:ls:rm:[bf]g:exit:pwd:clear:mount:umount' # ignore unin
 #export HISTTIMEFORMAT="%s "
 #PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $USER "$(history 1)" >> ~/.bash_eternal_history'
 
-## ---- aliases ----
+## ---- ALIASES ----
 
 ## directories
 alias ..='cd ..'
@@ -132,22 +132,22 @@ alias update-tags='cdr; ctags -R -f ./.git/tags .' # update tags for current git
 alias md="mkdir"
 alias rd="rmdir"
 
-## ---- helper functions ----
+## ---- HELPER FUNCTIONS ----
 
-alias shell-name="ps -p $$" # display name of current shell
+alias shell_name="ps -p $$" # display name of current shell
 #alias list-big-files="du -ah /home | sort -n -r | head -n 15" # list 15 largest files
-alias list-hosts="grep -w -i "Host" ~/.ssh/config | sed 's/Host//'" # list all hosts defined in .ssh/config
-alias dir-size="du -sh"
-alias list-funcs="typeset -F | grep -v '^declare -f _.*'" # list all user-defined functions
+alias list_hosts="grep -w -i "Host" ~/.ssh/config | sed 's/Host//'" # list all hosts defined in .ssh/config
+alias dir_size="du -sh"
+alias list_funcs="typeset -F | grep -v '^declare -f _.*'" # list all user-defined functions
 
 ## find file with pattern in name
-function find-file() { find . -type f -iname '*'"$*"'*' -ls 2>/dev/null; }
+function find_item() { find . -type f -iname '*'"$*"'*' -ls 2>/dev/null; }
 
 ## create ZIP archive of a file or folder
-function zip-file() { zip -r "${1%%/}.zip" "$1" ; }
+function zip_item() { zip -r "${1%%/}.zip" "$1" ; }
 
 ## apply default perms
-function fix-perms() { chmod -R u=rwX,g=rX,o= "$@" ; }
+function fix_perms() { chmod -R u=rwX,g=rX,o= "$@" ; }
 
 ## quote string for grep / regex
 #function quote-str() { sed 's/[]\.|$(){}?+*^]/\\&/g' <<< "$*" }
@@ -174,7 +174,7 @@ extract() {
     fi
 }
 
-## ---- helper apps ----
+## ---- HELPER APPS ----
 
 ## -- load ssh keys
 ## https://unix.stackexchange.com/a/217223
@@ -212,15 +212,9 @@ fi
 ##    https://apple.stackexchange.com/a/55886
 [ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
 
-## ---- user config ----
+## ---- USER CONFIG ----
 
 if [ -f $HOME/.bashrc.user ]; then
 	echo -e $ESC_HI"loading user config"$ESC_NO
 	source $HOME/.bashrc.user
 fi
-
-PATH="/Users/work/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/work/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/work/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/work/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/work/perl5"; export PERL_MM_OPT;
