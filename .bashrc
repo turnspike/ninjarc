@@ -125,7 +125,7 @@ fi
 ## apps
 alias g="git"
 alias cdr='cd $(git rev-parse --show-cdup)' # cd to git root
-alias cdh='cd ~' # cd is overwritten by enhancd
+alias cdh='cd -' # enhancd history
 alias update-tags='cdr; ctags -R -f ./.git/tags .' # update tags for current git project
 
 ## system
@@ -196,6 +196,7 @@ ssh-add -l > /dev/null || ssh-add
 export ENHANCD_FILTER=fzf;
 export ENHANCD_DISABLE_DOT=1;
 export ENHANCD_HOOK_AFTER_CD="l";
+export ENHANCD_DISABLE_HOME="1";
 [ -f ~/.enhancd/init.sh ] && source ~/.enhancd/init.sh
 
 ## -- load bashmarks
