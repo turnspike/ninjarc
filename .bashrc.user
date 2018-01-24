@@ -1,6 +1,8 @@
 
 ##-- env config based on OS
 
+alias notesw="nvim ~/wiki/work/index.md"
+
 if [[ "$OSTYPE" == "darwin"* ]]; then # macos
 
 	## homebrew: https://brew.sh
