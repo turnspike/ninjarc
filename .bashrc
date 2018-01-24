@@ -134,11 +134,14 @@ alias rd="rmdir"
 
 ## ---- HELPER FUNCTIONS ----
 
-alias shell_name="ps -p $$" # display name of current shell
-#alias list-big-files="du -ah /home | sort -n -r | head -n 15" # list 15 largest files
-alias list_hosts="grep -w -i "Host" ~/.ssh/config | sed 's/Host//'" # list all hosts defined in .ssh/config
 alias dir_size="du -sh"
-alias list_funcs="typeset -F | grep -v '^declare -f _.*'" # list all user-defined functions
+alias find_proc="ps aux | percol | awk '{ print $2 }' | echo" # interactively search for process id
+alias hosts="grep -w -i "Host" ~/.ssh/config | sed 's/Host//'" # list all hosts defined in .ssh/config
+alias funcs="typeset -F | grep -v '^declare -f _.*'" # list all user-defined functions
+alias kill_proc="ps aux | percol | awk '{ print $2 }' | xargs kill"
+#alias list-big-files="du -ah /home | sort -n -r | head -n 15" # list 15 largest files
+alias shell_name="ps -p $$" # display name of current shell
+# TODO more percol: http://jacobbridges.github.io/post/awesome-percol-examples/
 
 ## find file with pattern in name
 function find_item() { find . -type f -iname '*'"$*"'*' -ls 2>/dev/null; }
@@ -219,3 +222,5 @@ if [ -f $HOME/.bashrc.user ]; then
 	echo -e $ESC_HI"loading user config"$ESC_NO
 	source $HOME/.bashrc.user
 fi
+
+export PATH=/Users/work/.local/bin/luna-studio:$PATH
