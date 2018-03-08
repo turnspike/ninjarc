@@ -1,3 +1,4 @@
 .bashrc
-.vimrc
 .gitconfig
+.inputrc
+.vimrc
