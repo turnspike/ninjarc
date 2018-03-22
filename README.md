@@ -36,17 +36,6 @@ Ninjarc will skip existing files by default. To force overwrite, run install.sh 
 ```
 
 ---
-
-# User Settings
-
-You might want to add your own user settings eg git username. Just:
-```sh
-cp -f ~/ninjarc/*.user ~
-```
-
-Then edit to taste. This step can usually be ignored for ops work on random servers.
-
----
 # Bash notes
 
 List aliases:
