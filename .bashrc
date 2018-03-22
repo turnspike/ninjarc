@@ -215,12 +215,3 @@ fi
 ## -- git tab completion
 ##    https://apple.stackexchange.com/a/55886
 [ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
-
-## ---- USER CONFIG ----
-
-if [ -f $HOME/.bashrc.user ]; then
-	echo -e $ESC_HI"loading user config"$ESC_NO
-	source $HOME/.bashrc.user
-fi
-
-export PATH=/Users/work/.local/bin/luna-studio:$PATH
