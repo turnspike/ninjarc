@@ -30,8 +30,8 @@ done; OPTIND=0
 
 print-h "symlinking .rc files..."
 
-## loop through .files and try to symlink each line
-filename="$DIR/.files"
+## loop through ./symlinks.rc and try to symlink each line
+input_file="$DIR/symlinks.rc"
 while read file; do
 
   if [ ! -e $HOME/$file ]; then # file doesn't exist
@@ -46,7 +46,22 @@ while read file; do
     echo "couldn't write ~/$file, skipping"
   fi
 
-done < $filename
+done < $input_file
+
+## loop through ./sources.rc,
+##   touch ~/$file, add a line that sources $DIR/$file
+##   this allows eg .bashrc to use ninjarc settings without overwriting the whole user file with a symlink
+
+input_file="$DIR/sources.rc"
+while read file; do
+
+  echo "sourcing $DIR/$file in ~/$file"
+  touch $HOME/$file
+  
+  ## TODO check if "source" line exists and skip if present
+  echo -e "source $DIR/$file" >> ~/$file
+
+done < $input_file
 
 ## TODO make these git submodules
 
