@@ -215,8 +215,9 @@ fi
 ## ---- MACOS SPECIFIC ----
 
 if [[ "$(uname)" = "Darwin" ]]; then
-  alias em="/Applications/Emacs.app/Contents/MacOS/Emacs"
   alias em="/usr/local/bin/emacs"
+  export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH" # homebrew
+  export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH" # use coreutils readlink
 fi
 
 ## ---- TAB COMPLETION FOR ALIASES ----
