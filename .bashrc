@@ -7,6 +7,8 @@
 ESC_SEQ="\x1b[" # start color sequence
 ESC_NO=$ESC_SEQ"39;49;00m" # reset color
 ESC_HI=$ESC_SEQ"01;034m" # blue
+#export NINJARC=$( cd $(dirname $0) ; pwd -P )
+#export NINJARC="~/.ninjarc"
 
 ## pretty print functions
 shopt -sq checkwinsize # check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
