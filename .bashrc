@@ -178,14 +178,14 @@ extract() {
 
 ## -- load ssh keys
 #  https://unix.stackexchange.com/a/217223
-echo -e $ESC_HI"loading ssh-agent"$ESC_NO
+echo -e $ESC_HI"checking for ssh-agent..."$ESC_NO
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then # only one instance of ssh-agent per session
 	echo "starting new instance of ssh-agent"
   eval `ssh-agent`
   ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+  export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+  ssh-add -l > /dev/null || ssh-add
 fi
-export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-ssh-add -l > /dev/null || ssh-add
 
 ## -- load fzf
 #     https://github.com/junegunn/fzf
@@ -220,6 +220,7 @@ if [[ "$(uname)" = "Darwin" ]]; then
   alias em="/usr/local/bin/emacs"
   export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH" # homebrew
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH" # use coreutils readlink
+  source /usr/local/share/chruby/chruby.sh # chruby for ruby version mgmt
 fi
 
 ## ---- TAB COMPLETION FOR ALIASES ----
