@@ -51,4 +51,4 @@
 	unstage = reset
 	uncommit = reset --soft HEAD^
 [include]
-	path = .gitconfig.user # load user settings. Silently ignored if file not present.
+	path = .gitconfig_user # load user settings. Silently ignored if file not present.

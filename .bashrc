@@ -209,11 +209,6 @@ if [ -f ~/.bashmarks/bashmarks.sh ]; then
     alias ${BASHMARKS_PREFIX}e="bashmarks_p"
 fi
 
-## -- git tab completion
-#     https://apple.stackexchange.com/a/55886
-[ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
-
-
 ## ---- MACOS SPECIFIC ----
 
 if [[ "$(uname)" = "Darwin" ]]; then
@@ -221,7 +216,23 @@ if [[ "$(uname)" = "Darwin" ]]; then
   export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH" # homebrew
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH" # use coreutils readlink
   source /usr/local/share/chruby/chruby.sh # chruby for ruby version mgmt
+  source /usr/local/share/chruby/auto.sh # load .ruby_version automatically after cd
+  [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 fi
+
+## ---- GIT FUNCTIONS ----
+
+# Amend the last commit message.
+# Push the changes to remote by force.
+# USAGE: gamend "Your New Commit Msg"
+function gamend() {
+    git commit --amend -m "$@"
+    git push --force-with-lease
+}
+
+# git tab completion
+# https://apple.stackexchange.com/a/55886
+[ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
 
 ## ---- TAB COMPLETION FOR ALIASES ----
 #  https://stackoverflow.com/questions/342969/how-do-i-get-bash-completion-to-work-with-aliases
