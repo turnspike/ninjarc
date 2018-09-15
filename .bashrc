@@ -222,9 +222,9 @@ fi
 
 ## ---- GIT FUNCTIONS ----
 
-# Amend the last commit message.
-# Push the changes to remote by force.
+# Amend the last commit message and push the changes to remote by force
 # USAGE: gamend "Your New Commit Msg"
+# https://dev.to/mrahmadawais/one-command-to-change-the-last-git-commit-message--42hb
 function gamend() {
     git commit --amend -m "$@"
     git push --force-with-lease
