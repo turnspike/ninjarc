@@ -39,7 +39,7 @@ while read file; do
     ln -s $DIR/$file $HOME
   elif [ -w $HOME/$file ] && [ $FORCE -eq 1 ]; then # file exists and force set, overwrite
     echo "overwriting ~/$file"
-    ln -fs $DIR/$file $HOME
+    ln -sf $DIR/$file $HOME
   elif [ -w $HOME/$file ] && [ $FORCE -ne 1 ]; then # file exists and force not set, skip
     echo "~/$file exists, skipping..."
   else # file exists and is not writeable or other issue eg it's a directory
