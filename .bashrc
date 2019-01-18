@@ -149,6 +149,9 @@ function zip_item() { zip -r "${1%%/}.zip" "$1" ; }
 ## apply default perms
 function fix_perms() { chmod -R u=rwX,g=rX,o= "$@" ; }
 
+## autocomplete host entries
+complete -o default -o nospace -W "$(grep "^Host" $HOME/.ssh/config | cut -d" " -f2)" scp sftp ssh
+
 ## quote string for grep / regex
 #function quote-str() { sed 's/[]\.|$(){}?+*^]/\\&/g' <<< "$*" }
 
@@ -215,8 +218,12 @@ if [[ "$(uname)" = "Darwin" ]]; then
   alias em="/usr/local/bin/emacs"
   export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH" # homebrew
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH" # use coreutils readlink
-  source /usr/local/share/chruby/chruby.sh # chruby for ruby version mgmt
-  source /usr/local/share/chruby/auto.sh # load .ruby_version automatically after cd
+  #source /usr/local/share/chruby/chruby.sh # chruby for ruby version mgmt 
+  #source /usr/local/share/chruby/auto.sh # load .ruby_version automatically after cd #
+  # chruby is bugging out, use rvm for now
+  #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+  export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
+  if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
   [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 fi
 
