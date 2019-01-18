@@ -215,6 +215,8 @@ fi
 ## ---- MACOS SPECIFIC ----
 
 if [[ "$(uname)" = "Darwin" ]]; then
+  alias l="gls -h --group-directories-first --color=always"
+  alias ll="gls -alFhG --group-directories-first --color=always" # use gnu ls instead of system ls (enable better color support)
   alias em="/usr/local/bin/emacs"
   export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH" # homebrew
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH" # use coreutils readlink
