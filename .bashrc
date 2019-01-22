@@ -55,9 +55,30 @@ function hr() {
 
 }
 
+## git status prompt
+#gb() {
+#        echo -n ':(' && git branch 2>/dev/null | grep '^*' | colrm 1 2 | tr -d '\n' && echo  -n ')'
+#}
+#git_branch() {
+#        gb | sed 's/:()//'
+#}
+
+#git_branch() {
+#     #git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+#     git describe --contains --all HEAD 2>/dev/null;
+#}
+#export PS1="$C_NO$C_DIM$(hr)$C_NO\n$C_USER\u$C_NO$C_HI@\h$C_NO $C_DIM\w$(git_branch)$C_NO\n$C_HI>$C_NO"
+
 ## apply prompt
 #export PS1="$C_NO$C_DIM$(hr)\n$C_NO$C_USER\u$C_NO$C_HI@\h$C_NO$C_DIM \w\n$C_NO$C_HI\342\210\264 $C_NO" # this is breaking <ctrl-r>
-export PS1="$C_NO$C_DIM$(hr)$C_NO\n$C_USER\u$C_NO$C_HI@\h$C_NO $C_DIM\w$C_NO\n$C_HI>$C_NO"
+#export PS1="$C_NO$C_DIM$(hr)$C_NO\n$C_USER\u$C_NO$C_HI@\h$C_NO $C_DIM\w$C_NO:\$(eval_git_branch)\n$C_HI>$C_NO"
+#source /usr/local/etc/bash_completion.d/git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+#export GIT_PS1_SHOWCOLORHINTS=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+[ -f /usr/local/etc/bash_completion.d/git-prompt.sh ] && source /usr/local/etc/bash_completion.d/git-prompt.sh
+
+export PS1="$C_NO$C_DIM$(hr)$C_NO\n$C_USER\u$C_NO$C_HI@\h$C_NO $C_DIM\w\$(__git_ps1)$C_NO\n$C_HI>$C_NO"
 
 ## ---- DISPLAY GREETING ----
 
