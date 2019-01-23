@@ -40,6 +40,7 @@ set formatoptions=l
 
 set hidden " enable multi file editing
 set splitbelow " open hsplits down (defaults up)
+
 set splitright " open vsplits right (defaults left)
 "set autochdir " set working directory to current file eg for :e
 
@@ -49,7 +50,7 @@ set backspace=indent,eol,start
 set nostartofline " preserve column on page movements
 
 augroup copyPaste
-  " Unset paste on InsertLeave
+  " unset paste on InsertLeave
   au InsertLeave * silent! set nopaste
 augroup END
 
@@ -60,16 +61,18 @@ augroup Cursor
   autocmd InsertEnter,InsertLeave * set cul! " underline current line for insert mode only
 augroup END
 
-if $TERM_PROGRAM =~ "iTerm"
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
-endif
+" -- this causes lockups when pressing A,O and when exiting insert mode
+"if $TERM_PROGRAM =~ "iTerm"
+"    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+"    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+"endif
 
 " ---- TIMEOUTS (LEADER KEYS, ESC) ----
 
+"" -- timeouts can cause UI lag
+"set timeoutlen=100 ttimeoutlen=0
 set nottimeout " no timeouts for key combos
-" set ttimeout
-" set ttimeoutlen=100
+set notimeout " no timeouts for key combos
 
 " ---- COMMANDLINE ----
 
@@ -106,45 +109,38 @@ nnoremap <expr> k v:count == 0 ? 'gk' : 'k'
 " select most recently edited/pasted text with gp
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
+" reselect text when indenting in visual mode
+vnoremap < <gv
+vnoremap > >gv
+
 " exit insert mode with <jk>
-imap <silent> jk <esc>
+"imap <silent> jk <esc>
 
 augroup Keybinds
   autocmd!
-  "" q will quit help buffer
+  " q will quit help buffer
   autocmd FileType help noremap <buffer> q :q<cr>
 augroup END
 
 " ---- LEADER KEYS ----
 
-nnoremap <leader>w :w<cr>
+""nnoremap <leader>w :w<cr>
 nnoremap <leader>x :Bdelete!<cr>
 
 " ---- FILE BROWSER ----
 
-" -- open netrw as left pane with :Ve
-" https://shapeshed.com/vim-netrw/
+"" -- open netrw as left pane with :Ve
+"" https://shapeshed.com/vim-netrw/
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
+
 "augroup ProjectDrawer
 "  autocmd!
 "  autocmd VimEnter * :Vexplore " always show file drawer
-"augroup END
-
-" ---- COMMAND SHORTCUTS ----
-
-" -- vim config
-command! ConfigEdit edit $MYVIMRC " edit config file
-command! ConfigReload source $MYVIMRC " live reload config
-
-"    TODO: add command to change PWD to git root
-command! FilePath :echo resolve(expand('%:p')) " display path of current file
-
-" expand :e %%/ on the command line to :e /some/path/
-cabbr <expr> %% expand('%:p:h')
+""augroup END
 
 " ---- TYPOS ----
 
@@ -176,3 +172,15 @@ colorscheme desert
 set noerrorbells " no bell
 syntax enable " enable syntax highlighting
 
+" ---- COMMANDS ----
+
+command! ConfigEdit edit ~/.config/ninjarc/.vimrc " edit config file
+command! ConfigReload source $MYVIMRC " live reload config
+" TODO: add command to change PWD to git root
+command! FilePath :echo resolve(expand('%:p')) " display path of current file
+
+"
+" expand :e %%/ on the command line to :e /some/path/
+cabbr <expr> %% expand('%:p:h')
+
+" ---- FUNCTIONS ----
