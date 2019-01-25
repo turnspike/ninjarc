@@ -3,11 +3,9 @@ Super minimal .rc files for traipsing around Other People's Servers™
 
 # Why?
 
-Get In And Get Out of some random server with color and comfort. Zero dependencies to install. No plugins. The only external tool used is [fuzzy-finder](https://github.com/junegunn/fzf/), which is portable.
+Get In And Get Out of some random server with color and comfort. Zero dependencies to install. No plugins. The only external tool used is [fuzzy-finder](https://github.com/junegunn/fzf/). This is an experiment in minimalism.
 
 ![ninjarc screenshot](https://github.com/turnspike/ninjarc/raw/master/screenshot.png)
-
-This is an experiment in minimalism.
 
 # Installation
 ```sh
