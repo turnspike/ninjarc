@@ -37,6 +37,7 @@ list-funcs
 | Action | Command |
 |-|-|
 | **Search by filename in subdirs** | `<c-t>` |
+| **Find and edit in vim** | `vim <c-t>` |
 | **Search history** | `<c-r>` |
 | **???** | `<alt-c>` |
 | **Grep in subdirs** | `fzg<enter>` |
