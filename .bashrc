@@ -252,6 +252,28 @@ if [[ "$(uname)" = "Darwin" ]]; then
   [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 fi
 
+## ---- FZF FUNCTIONS ----
+
+# fuzzy grep open via ag with line number
+fzg() {
+  local file
+  local line
+
+  read -r file line <<<"$(ag --nobreak --noheading $@ | fzf -0 -1 | awk -F: '{print $1, $2}')"
+
+  if [[ -n $file ]]
+  then
+     vim $file +$line
+  fi
+}
+
+# cdf - cd into the directory of the selected file
+cdf() {
+   local file
+   local dir
+   file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+}
+
 ## ---- GIT FUNCTIONS ----
 
 # Amend the last commit message and push the changes to remote by force
