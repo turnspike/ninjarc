@@ -55,6 +55,7 @@ list-funcs
 | **???** | `<alt-c>` |
 | **Grep in subdirs** | `fzg<enter>` |
 | **Find file and cd to subdir** | `cdf<enter>` |
+| **Cd to git root** | `cdr<enter>` |
 
 ---
 # Vim notes
