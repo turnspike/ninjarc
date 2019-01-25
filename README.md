@@ -34,7 +34,7 @@ list-funcs
 
 ### Fuzzy finder
 
-| | |
+| Action | Command |
 |-|-|
 | **Search by filename in subdirs** | `<c-t>` |
 | **Search history** | `<c-r>` |
