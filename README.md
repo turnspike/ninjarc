@@ -12,26 +12,12 @@ Get In And Get Out of some random server with color and comfort. Zero dependenci
 git clone https://github.com/turnspike/ninjarc.git ~/ninjarc && chmod u+x ~/ninjarc/install.sh && ~/ninjarc/install.sh
 ```
 
-# Philosophy
-
-**Yes:**
-- Speed
-- Simplicity
-- Small problem space, easy to hold in mind
-
-**Minimal:**
-- Shortcuts to remember
-- Helper functions
-
-**No:**
-- Dependencies to install
-- Plugins
-- Leader keys
-
 Ninjarc will skip existing files by default. To force overwrite, run install.sh with the -f param:
 ```sh
 ~/ninjarc/install.sh -f
 ```
+
+TODO: add option to skip installation of Vim settings.
 
 ---
 # Bash notes
@@ -46,7 +32,7 @@ List non-OS functions:
 list-funcs
 ```
 
-### Fuzzy finder:
+### Fuzzy finder
 
 | | |
 |-|-|
@@ -63,8 +49,6 @@ list-funcs
 No plugins, mimimal config.
 
 ## Living without plugins
-
-Particular plugins might not be available in an IDE's Vim mode, so to minimize friction they are not used here. The [Tim Pope](https://github.com/tpope) plugins are pretty hard to give up - I may cave on this in the future.
 
 Related video: [How to do 90% of what plugins do with just Vim](https://www.youtube.com/watch?v=XA2WjJbmmoM_)
 
