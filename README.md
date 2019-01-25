@@ -47,6 +47,7 @@ list-funcs
 ```
 
 Fuzzy finder:
+
 | | |
 |-|-|
 | **Search by filename in subdirs** | `<c-t>` |
