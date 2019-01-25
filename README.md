@@ -7,7 +7,12 @@ Get In And Get Out of some random server with color and comfort. Zero dependenci
 
 ![ninjarc screenshot](https://github.com/turnspike/ninjarc/raw/master/screenshot.png)
 
-This is an experiment in minimalism as a response to my previous [plugin-heavy, super customized workflow](https://github.com/turnspike/aetherwolf). Using every plugin under the sun was like unto a tacticool mallninja. Another goal is to minimise friction when using Vim mode in various IDEs such as [Spacemacs](http://spacemacs.org) and [Atom](https://atom.io), which don't necessarily have particular Vim plugins available. 
+This is an experiment in minimalism.
+
+# Installation
+```sh
+git clone https://github.com/turnspike/ninjarc.git ~/ninjarc && chmod u+x ~/ninjarc/install.sh && ~/ninjarc/install.sh
+```
 
 # Philosophy
 
@@ -24,11 +29,6 @@ This is an experiment in minimalism as a response to my previous [plugin-heavy, 
 - Dependencies to install
 - Plugins
 - Leader keys
-
-# Installation
-```sh
-git clone https://github.com/turnspike/ninjarc.git ~/ninjarc && chmod u+x ~/ninjarc/install.sh && ~/ninjarc/install.sh
-```
 
 Ninjarc will skip existing files by default. To force overwrite, run install.sh with the -f param:
 ```sh
@@ -48,6 +48,15 @@ List non-OS functions:
 list-funcs
 ```
 
+Fuzzy finder:
+| | |
+|-|-|
+| **Search by filename in subdirs** | `<c-t>` |
+| **Search history** | `<c-r>` |
+| **???** | `<alt-c>` |
+| **Grep in subdirs** | `fzg<enter>` |
+| **Find file and cd to subdir** | `cdf<enter>` |
+
 ---
 # Vim notes
 
@@ -55,7 +64,7 @@ No plugins, mimimal config.
 
 ## Living without plugins
 
-Particular plugins might not be available in an IDE's Vim mode, so to minimize friction they are not used here. The [Tim Pope](https://github.com/tpope) plugins are pretty hard to give up - I may cave on this in the future as they're somewhat available in [Spacemacs](https://spacemacs.org).
+Particular plugins might not be available in an IDE's Vim mode, so to minimize friction they are not used here. The [Tim Pope](https://github.com/tpope) plugins are pretty hard to give up - I may cave on this in the future.
 
 Related video: [How to do 90% of what plugins do with just Vim](https://www.youtube.com/watch?v=XA2WjJbmmoM_)
 
@@ -84,7 +93,7 @@ Living without [fzf.vim](https://github.com/junegunn/fzf.vim) and [NERDTree](htt
 
 | | |
 |-|-|
-| **Fuzzyish file find** <br> will look in subdirs | `:f name*<tab>` <br> *or* <br> `:f *.ext<tab>` |
+| **Fuzzyish filename find** <br> will look in subdirs | `:f name*<tab>` <br> *or* <br> `:f *.ext<tab>` |
 | **Edit file in same directory as current file** | `:e %%/` |
 | **Open file browser** | `:E` |
 | **Open file drawer** | `:Ve` |
@@ -102,10 +111,11 @@ Also living without [fzf.vim](https://github.com/junegunn/fzf.vim):
 | **List all buffers** | `ls` |
 
 ### Version control
-There's no equivalent for [GitGutter](https://github.com/airblade/vim-gitgutter), so use `git diff`.
+There's no equivalent for [GitGutter](https://github.com/airblade/vim-gitgutter), so use `:!git diff`.
 
 ---
 # Known bugs
 
 * On MacOS, horizontal rules don't fit to new screen width when terminal is resized (tput cols is returning wrong value)
 * On RHEL, install.sh -f won't force overwrite; workaround is to rm the relevant .rc files in ~ first
+* Old versions of RHEL might not have go, so FZF will be unavailable
