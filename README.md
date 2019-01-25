@@ -46,7 +46,7 @@ List non-OS functions:
 list-funcs
 ```
 
-Fuzzy finder:
+### Fuzzy finder:
 
 | | |
 |-|-|
