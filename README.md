@@ -55,7 +55,7 @@ Related video: [How to do 90% of what plugins do with just Vim](https://www.yout
 ### Commenting
 Living without [vim-commentary](https://github.com/tpope/vim-commentary):
 
-| | |
+| Action | Command |
 |-|-|
 | **Comment a single line** | `I// <Esc>` |
 | **Uncomment a single line** | `^dw` |
@@ -65,7 +65,7 @@ Living without [vim-commentary](https://github.com/tpope/vim-commentary):
 ### Quoting
 Living without [vim-surround](https://github.com/tpope/vim-surround):
 
-| | |
+| Action | Command |
 |-|-|
 | **Quote a word** | `ciw'Ctrl+r"` <br> *or* <br> `ciw '' Esc P` |
 | **Unquote a word** | `di'hPl2x` |
@@ -75,7 +75,7 @@ Living without [vim-surround](https://github.com/tpope/vim-surround):
 ### Files
 Living without [fzf.vim](https://github.com/junegunn/fzf.vim) and [NERDTree](https://github.com/scrooloose/nerdtree):
 
-| | |
+| Action | Command |
 |-|-|
 | **Fuzzyish filename find** <br> will look in subdirs | `:f name*<tab>` <br> *or* <br> `:f *.ext<tab>` |
 | **Edit file in same directory as current file** | `:e %%/` |
@@ -87,7 +87,7 @@ Living without [fzf.vim](https://github.com/junegunn/fzf.vim) and [NERDTree](htt
 ### Buffers
 Also living without [fzf.vim](https://github.com/junegunn/fzf.vim):
 
-| | |
+| Action | Command |
 |-|-|
 | **Buffer list** | `:b <tab>` |
 | **Switch to buffer by name** | `:b partialname<tab>` <br> *or* <br> `:b <tab>partialname<tab>` |
