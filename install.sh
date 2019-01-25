@@ -100,6 +100,10 @@ curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-com
 ##vim +PlugInstall +qall
 
 ## ---- MACOS ----
+if [[ "$(uname)" = "Darwin" ]]; then
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  brew install hh
+fi
 
 ## ---- FINALIZE ----
 
