@@ -62,6 +62,7 @@ augroup Cursor
 augroup END
 
 " -- this causes lockups when pressing A,O and when exiting insert mode
+" because of the escape chars!!
 "if $TERM_PROGRAM =~ "iTerm"
 "    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
 "    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
@@ -112,6 +113,7 @@ nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 " reselect text when indenting in visual mode
 vnoremap < <gv
 vnoremap > >gv
+vnoremap = =gv
 
 " exit insert mode with <jk>
 "imap <silent> jk <esc>
