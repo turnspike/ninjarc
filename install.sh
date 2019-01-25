@@ -1,10 +1,10 @@
 #!/bin/bash
 
 ## Ninjarc install script
-## - Symlinks .rc files into ~
-## - Installs fzf
-## - Installs vim plugins (minimal set)
+## speed through Other People's Servers™ (minimal .rc files)
 ## https://github.com/turnspike/ninjarc
+
+## ---- INITIALIZE ----
 
 ESC_SEQ="\x1b[" # color escape sequence
 ESC_NO=$ESC_SEQ"39;49;00m" # reset to normal color
@@ -21,6 +21,8 @@ echo -e $(hr)$ESC_NO
 DIR=$( cd $(dirname $0) ; pwd -P ) # get the path to the installer script
 echo "installing from: $DIR"
 
+## ---- READ CLI FLAGS ----
+
 ## pass -f to force linking
 FORCE=0;
 while getopts f x; do
@@ -29,6 +31,8 @@ while getopts f x; do
 done; OPTIND=0
 
 print-h "symlinking .rc files..."
+
+## ---- CREATE SYMLINKS ----
 
 ## loop through ./symlinks.rc and try to symlink each line
 input_file="$DIR/symlinks.rc"
@@ -48,6 +52,8 @@ while read file; do
 
 done < $input_file
 
+## ---- ADD SOURCE LINES ----
+
 ## loop through ./sources.rc,
 ##   touch ~/$file, add a line that sources $DIR/$file
 ##   this allows eg .bashrc to use ninjarc settings without overwriting the whole user file with a symlink
@@ -59,35 +65,43 @@ while read file; do
   touch $HOME/$file
   
   ## TODO check if "source" line exists and skip if present
+  ## reference FZF installer for method
   echo -e "source $DIR/$file" >> ~/$file
 
 done < $input_file
 
+## ---- INSTALL SYSTEM UTILITIES ----
+
 ## TODO make these git submodules
 
-## install fzf
+## -- install fzf
 print-h "installing fuzzyfinder fzf..."
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 cd ~/.fzf; git pull
 ~/.fzf/install --key-bindings --completion --no-update-rc
 echo "use <c-t>, <c-r>, <alt-c> to fuzzy find in shell"
 
-## install bashmarks
+## -- install bashmarks
 print-h "installing bashmarks..."
 git clone git://github.com/turnspike/bashmarks.git ~/.bashmarks
 cd ~/.bashmarks; git pull
 make install
 
-## install enhancd
+## -- install enhancd
 print-h "installing enhancd..."
 git clone https://github.com/b4b4r07/enhancd ~/.enhancd
 cd ~/.enhancd; git pull
 
-## install git tab completion
+## -- install git tab completion
+## TODO install under ~/.config
 curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
 
-## install vim plugins
+## -- install vim plugins
 ##vim +PlugInstall +qall
+
+## ---- MACOS ----
+
+## ---- FINALIZE ----
 
 ## reload bash
 print-h "restarting bash..."
