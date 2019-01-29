@@ -99,6 +99,9 @@ set ignorecase
 set smartcase
 set infercase
 
+" Unset the "last search pattern" register by hitting return
+nnoremap <CR> :noh<CR><CR>
+
 " ---- KEYBINDS ----
 
 " -- move cursor naturally through wrapped lines
@@ -180,9 +183,10 @@ command! ConfigEdit edit ~/.config/ninjarc/.vimrc " edit config file
 command! ConfigReload source $MYVIMRC " live reload config
 " TODO: add command to change PWD to git root
 command! FilePath :echo resolve(expand('%:p')) " display path of current file
-
-"
 " expand :e %%/ on the command line to :e /some/path/
 cabbr <expr> %% expand('%:p:h')
+" set window working dir to file path
+command! FileCd :lcd %:p:h
+
 
 " ---- FUNCTIONS ----
