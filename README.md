@@ -12,26 +12,12 @@ Get In And Get Out of some random server with color and comfort. Zero dependenci
 git clone https://github.com/turnspike/ninjarc.git ~/ninjarc && chmod u+x ~/ninjarc/install.sh && ~/ninjarc/install.sh
 ```
 
-# Philosophy
-
-**Yes:**
-- Speed
-- Simplicity
-- Small problem space, easy to hold in mind
-
-**Minimal:**
-- Shortcuts to remember
-- Helper functions
-
-**No:**
-- Dependencies to install
-- Plugins
-- Leader keys
-
 Ninjarc will skip existing files by default. To force overwrite, run install.sh with the -f param:
 ```sh
 ~/ninjarc/install.sh -f
 ```
+
+TODO: add option to skip installation of Vim settings.
 
 ---
 # Bash notes
@@ -46,11 +32,12 @@ List non-OS functions:
 list-funcs
 ```
 
-### Fuzzy finder:
+### Fuzzy finder
 
-| | |
+| Action | Command |
 |-|-|
 | **Search by filename in subdirs** | `<c-t>` |
+| **Find and edit in vim** | `vim <c-t>` |
 | **Search history** | `<c-r>` |
 | **???** | `<alt-c>` |
 | **Grep in subdirs** | `fzg<enter>` |
@@ -64,14 +51,12 @@ No plugins, mimimal config.
 
 ## Living without plugins
 
-Particular plugins might not be available in an IDE's Vim mode, so to minimize friction they are not used here. The [Tim Pope](https://github.com/tpope) plugins are pretty hard to give up - I may cave on this in the future.
-
 Related video: [How to do 90% of what plugins do with just Vim](https://www.youtube.com/watch?v=XA2WjJbmmoM_)
 
 ### Commenting
 Living without [vim-commentary](https://github.com/tpope/vim-commentary):
 
-| | |
+| Action | Command |
 |-|-|
 | **Comment a single line** | `I// <Esc>` |
 | **Uncomment a single line** | `^dw` |
@@ -81,7 +66,7 @@ Living without [vim-commentary](https://github.com/tpope/vim-commentary):
 ### Quoting
 Living without [vim-surround](https://github.com/tpope/vim-surround):
 
-| | |
+| Action | Command |
 |-|-|
 | **Quote a word** | `ciw'Ctrl+r"` <br> *or* <br> `ciw '' Esc P` |
 | **Unquote a word** | `di'hPl2x` |
@@ -91,7 +76,7 @@ Living without [vim-surround](https://github.com/tpope/vim-surround):
 ### Files
 Living without [fzf.vim](https://github.com/junegunn/fzf.vim) and [NERDTree](https://github.com/scrooloose/nerdtree):
 
-| | |
+| Action | Command |
 |-|-|
 | **Fuzzyish filename find** <br> will look in subdirs | `:f name*<tab>` <br> *or* <br> `:f *.ext<tab>` |
 | **Edit file in same directory as current file** | `:e %%/` |
@@ -103,7 +88,7 @@ Living without [fzf.vim](https://github.com/junegunn/fzf.vim) and [NERDTree](htt
 ### Buffers
 Also living without [fzf.vim](https://github.com/junegunn/fzf.vim):
 
-| | |
+| Action | Command |
 |-|-|
 | **Buffer list** | `:b <tab>` |
 | **Switch to buffer by name** | `:b partialname<tab>` <br> *or* <br> `:b <tab>partialname<tab>` |
