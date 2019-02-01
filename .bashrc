@@ -248,7 +248,7 @@ if [[ "$(uname)" = "Darwin" ]]; then
   # chruby is bugging out, use rvm for now
   #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
   export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
-  if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+  if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash)"; fi
   [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 fi
 
