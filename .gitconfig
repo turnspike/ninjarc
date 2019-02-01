@@ -52,3 +52,8 @@
 	uncommit = reset --soft HEAD^
 [include]
 	path = .gitconfig_user # load user settings. Silently ignored if file not present.
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
