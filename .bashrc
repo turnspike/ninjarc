@@ -114,15 +114,15 @@ export TERM=xterm-256color
 #shopt -s histverify histreedit # load history substitute into readline rather than immediately executing
 shopt -s histappend # append to the history file, don't overwrite it
 shopt -s cmdhist # fix for multiline commands
-#export HISTCONTROL=ignoredups:erasedups # don't put duplicate lines or lines starting with space in the history.
-export HISTCONTROL=ignoreboth # don't put duplicate lines or lines with leading spaces in the history. See bash(1) for more options
+export HISTCONTROL=ignoredups:erasedups # don't put duplicate lines or lines starting with space in the history.
+#export HISTCONTROL=ignoreboth # don't put duplicate lines or lines with leading spaces in the history. See bash(1) for more options
 export HISTSIZE=10000 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 export HISTFILESIZE=20000
 export HISTIGNORE='&:l:ll:ls:rm:[bf]g:exit:pwd:clear:mount:umount' # ignore uninteresting or dangerous commands
 
 ## eternal bash history
-#export HISTTIMEFORMAT="%s "
-#PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $USER "$(history 1)" >> ~/.bash_eternal_history'
+export HISTTIMEFORMAT="%s "
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $$ $USER "$(history 1)" >> ~/.bash_eternal_history'
 
 ## ---- ALIASES ----
 
