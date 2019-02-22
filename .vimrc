@@ -118,6 +118,10 @@ vnoremap < <gv
 vnoremap > >gv
 vnoremap = =gv
 
+" move visual selection
+vnoremap J :m '>+1gv=gv
+vnoremap K :m '<-2gv=gv
+
 " exit insert mode with <jk>
 "imap <silent> jk <esc>
 
