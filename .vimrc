@@ -61,6 +61,8 @@ augroup Cursor
   autocmd InsertEnter,InsertLeave * set cul! " underline current line for insert mode only
 augroup END
 
+set mouse=a " enable mouse
+
 " -- this causes lockups when pressing A,O and when exiting insert mode
 " because of the escape chars!!
 "if $TERM_PROGRAM =~ "iTerm"
@@ -186,7 +188,8 @@ syntax enable " enable syntax highlighting
 command! ConfigEdit edit ~/.config/ninjarc/.vimrc " edit config file
 command! ConfigReload source $MYVIMRC " live reload config
 " TODO: add command to change PWD to git root
-command! FilePath :echo resolve(expand('%:p')) " display path of current file
+" display path of current file " display path of current file
+command! FilePath :echo resolve(expand('%:p'))
 " expand :e %%/ on the command line to :e /some/path/
 cabbr <expr> %% expand('%:p:h')
 " set window working dir to file path
