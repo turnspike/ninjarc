@@ -14,6 +14,7 @@ set shiftwidth=2                 " spaces used in >>, <<, ==, and autoindent
 "set smarttab                    " Remove smarttab since you don't want to use tab characters
 set softtabstop=2                " set tab to use 4 space characters
 set tabstop=2                    " width of tab character
+"set cindent
 
 " -- don't hard wrap or autoformat
 set nowrap
@@ -28,19 +29,10 @@ set formatoptions=l
 "set linebreak
 "set nolist " don't show hidden chars
 
-"set tabstop=2
-"set shiftwidth=2
-"set softtabstop=2
-"set expandtab
-"set autoindent
-"set cindent
-"set smarttab
-
 " ---- BUFFERS AND SPLITS ----
 
 set hidden " enable multi file editing
 set splitbelow " open hsplits down (defaults up)
-
 set splitright " open vsplits right (defaults left)
 "set autochdir " set working directory to current file eg for :e
 
@@ -72,7 +64,7 @@ set mouse=a " enable mouse
 
 " ---- TIMEOUTS (LEADER KEYS, ESC) ----
 
-"" -- timeouts can cause UI lag
+" timeouts can cause UI lag
 "set timeoutlen=100 ttimeoutlen=0
 set nottimeout " no timeouts for key combos
 set notimeout " no timeouts for key combos
@@ -135,13 +127,15 @@ augroup END
 
 " ---- LEADER KEYS ----
 
-""nnoremap <leader>w :w<cr>
+" nnoremap <leader>w :w<cr>
+
+" close buffer
 nnoremap <leader>x :Bdelete!<cr>
 
 " ---- FILE BROWSER ----
 
-"" -- open netrw as left pane with :Ve
-"" https://shapeshed.com/vim-netrw/
+" open netrw as left pane with :Ve
+" https://shapeshed.com/vim-netrw/
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
@@ -151,7 +145,7 @@ let g:netrw_winsize = 25
 "augroup ProjectDrawer
 "  autocmd!
 "  autocmd VimEnter * :Vexplore " always show file drawer
-""augroup END
+"augroup END
 
 " ---- TYPOS ----
 
