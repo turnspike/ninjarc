@@ -66,9 +66,9 @@ export GIT_PS1_SHOWUNTRACKEDFILES=1
 export PS1="$C_NO$C_DIM$(hr)$C_NO\n$C_USER\u$C_NO$C_HI@\h$C_NO $C_DIM\w$C_NO\n$C_HI>$C_NO"
 
 ## use git prompt if available on system
-if type __git_ps1 | grep -q '^function$' 2>/dev/null; then
+#if [ "$OSTYPE" == "darwin"* ] || [ type __git_ps1 | grep -q '^function$' 2>/dev/null ] then
   export PS1="$C_NO$C_DIM$(hr)$C_NO\n$C_USER\u$C_NO$C_HI@\h$C_NO $C_DIM\w\$(__git_ps1)$C_NO\n$C_HI>$C_NO"
-fi
+#fi
 
 ## ---- DISPLAY GREETING ----
 
