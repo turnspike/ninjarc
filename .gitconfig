@@ -37,13 +37,15 @@
 	cm = commit -m
   d = diff --color-words
 	dh = diff --color-words HEAD^
-	f = fetch
+  f = fetch
 #	l = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   lg = log --color=auto --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	ll = log --stat --abbrev-commit
   master = checkout master
 	p = push
+  pr-fetch  = "!f() { git fetch origin refs/pull/$1/head:pr/$1; } ; f"
+  pr-deleteall = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
   preview = diff --stat --cached origin/master
   s = status
   stage = add
