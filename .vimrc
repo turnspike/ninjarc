@@ -177,6 +177,9 @@ colorscheme desert
 set noerrorbells " no bell
 syntax enable " enable syntax highlighting
 
+set scrolloff=3 " scroll when cursor is 3 lines from top or bottom
+
+
 " ---- COMMANDS ----
 
 command! ConfigEdit edit ~/.config/ninjarc/.vimrc " edit config file
