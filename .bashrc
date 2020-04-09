@@ -231,6 +231,7 @@ if [[ "$(uname)" = "Darwin" ]]; then
   alias em="/usr/local/bin/emacs"
   export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH" # homebrew
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH" # use coreutils readlink
+  export OCI_DIR="$(brew --prefix)/lib" # Oracle Instant Client from homebrew
   #source /usr/local/share/chruby/chruby.sh # chruby for ruby version mgmt 
   #source /usr/local/share/chruby/auto.sh # load .ruby_version automatically after cd #
   export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
