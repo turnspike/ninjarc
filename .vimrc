@@ -40,6 +40,7 @@ set splitright " open vsplits right (defaults left)
 
 set backspace=indent,eol,start
 set nostartofline " preserve column on page movements
+set virtualedit=all " allow cursor to be moved one character past eol
 
 augroup copyPaste
   " unset paste on InsertLeave
@@ -55,7 +56,7 @@ augroup END
 
 set mouse=a " enable mouse
 
-" -- this causes lockups when pressing A,O and when exiting insert mode
+" -- #FIXME this causes lockups when pressing A,O and when exiting insert mode
 " because of the escape chars!!
 "if $TERM_PROGRAM =~ "iTerm"
 "    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
