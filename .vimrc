@@ -40,7 +40,7 @@ set splitright " open vsplits right (defaults left)
 
 set backspace=indent,eol,start
 set nostartofline " preserve column on page movements
-set virtualedit=all " allow cursor to be moved one character past eol
+" set virtualedit=all " allow cursor to be moved one character past eol... actually no this is annoying
 
 augroup copyPaste
   " unset paste on InsertLeave

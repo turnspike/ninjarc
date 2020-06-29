@@ -237,7 +237,7 @@ if [[ "$(uname)" = "Darwin" ]]; then
   #source /usr/local/share/chruby/auto.sh # load .ruby_version automatically after cd #
   export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
   if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash)"; fi
-  ssh-add -K ~/.ssh/id_rsa # autoload default ssh key
+  #ssh-add -K ~/.ssh/id_rsa # autoload default ssh key # mfa makes this annoying, disabling for now
   [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 fi
 
