@@ -47,7 +47,7 @@ list-funcs
 ---
 # Vim notes
 
-No plugins, mimimal config.
+Minimal plugins, mimimal config.
 
 ## Living without plugins
 
