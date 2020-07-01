@@ -97,7 +97,7 @@ cd ~/.enhancd; git pull
 curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
 
 ## -- install vim plugins
-##vim +PlugInstall +qall
+vim +PlugInstall +qall
 
 ## ---- MACOS ----
 if [[ "$(uname)" = "Darwin" ]]; then

@@ -195,3 +195,38 @@ command! FileCd :lcd %:p:h
 
 
 " ---- FUNCTIONS ----
+
+" ---- PLUGINS ----
+
+" initialise vimplug
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+
+"---- EDITING
+
+Plug 'tpope/vim-repeat' " add . repeat for some plugins
+Plug 'tpope/vim-unimpaired' " use ] and [ combos for :ex commands, eg ]b for next buffer
+Plug 'tpope/vim-surround' " bracket manipulation eg cs'<p>
+Plug 'tpope/vim-dispatch' " execute shell commands in the background
+Plug 'tpope/vim-rsi' " emacs/readline style keybinds
+" visually select outwards using <v>
+Plug 'terryma/vim-expand-region'
+" vipga= or gaip= to align on equal
+Plug 'junegunn/vim-easy-align' 
+
+"---- COMMENTING
+
+Plug 'scrooloose/nerdcommenter'
+let g:NERDDefaultAlign = 'left' " comment delimiters hard left
+let g:NERDCompactSexyComs = 1 " use compact syntax for prettified multi-line comments
+let g:NERDCommentEmptyLines = 1 " allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDTrimTrailingWhitespace = 1 " enable trimming of trailing whitespace when uncommenting
+
+" Initialize plugin system
+call plug#end()
