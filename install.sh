@@ -103,6 +103,7 @@ vim +PlugInstall +qall
 if [[ "$(uname)" = "Darwin" ]]; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   brew install hh
+  brew install coreutils
 fi
 
 ## ---- FINALIZE ----
