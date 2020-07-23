@@ -14,7 +14,7 @@ mkdir -p ~/.config && git clone https://github.com/turnspike/ninjarc.git ~/.conf
 
 Ninjarc will skip existing files by default. To force overwrite, run install.sh with the -f param:
 ```sh
-~/ninjarc/install.sh -f
+~/.config/ninjarc/install.sh -f
 ```
 
 TODO: add option to skip installation of Vim settings.
