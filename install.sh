@@ -102,6 +102,7 @@ vim +PlugInstall +qall
 ## ---- MACOS ----
 if [[ "$(uname)" = "Darwin" ]]; then
   mkdir ~/.ssh
+  touch ~/.ssh/config
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   brew install hh
   brew install coreutils
