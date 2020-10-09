@@ -20,7 +20,8 @@ set tabstop=2                    " width of tab character
 set nowrap
 set textwidth=0
 set linebreak
-set formatoptions=l
+"set formatoptions=l
+set formatoptions=tqnj
 "let &showbreak='▷ '
 "map F6 :se wrap! | echo &wrap
 "set wrap " soft wrap long lines 
@@ -76,7 +77,7 @@ set path+=** " search down into subfolders
 set wildmenu " <tab> autocompletion in commandline
 set wildmode=list:longest,full " more linuxy filename completion with <tab>
 set wildignore+=*/tmp/*,*/.git/*,*.so,*.swp,*.zip " exclude from <tab> completion
-"set rtp+=~/.fzf " add fuzzy finder to runtime path
+set rtp+=/usr/local/opt/fzf " add fuzzy finder to runtime path
 
 " ---- BACKUPS ----
 
