@@ -9,12 +9,12 @@ Get In And Get Out of some random server with color and comfort. Zero dependenci
 
 # Installation
 ```sh
-git clone https://github.com/turnspike/ninjarc.git ~/ninjarc && chmod u+x ~/ninjarc/install.sh && ~/ninjarc/install.sh
+mkdir -p ~/.config && git clone https://github.com/turnspike/ninjarc.git ~/.config/ninjarc && chmod u+x ~/.config/ninjarc/install.sh && ~/.config/ninjarc/install.sh
 ```
 
 Ninjarc will skip existing files by default. To force overwrite, run install.sh with the -f param:
 ```sh
-~/ninjarc/install.sh -f
+~/.config/ninjarc/install.sh -f
 ```
 
 TODO: add option to skip installation of Vim settings.
