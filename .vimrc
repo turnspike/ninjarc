@@ -100,6 +100,13 @@ nnoremap <CR> :noh<CR><CR>
 
 " ---- KEYBINDS ----
 
+" alias for <esc> since Big Sur breaks remapping caps using third party apps...
+" esc in insert mode
+inoremap jk <esc>
+
+" esc in command mode
+cnoremap jk <C-C>
+
 " -- move cursor naturally through wrapped lines
 "nnoremap <silent> j gj
 "nnoremap <silent> k gk
