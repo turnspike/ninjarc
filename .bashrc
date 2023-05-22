@@ -76,7 +76,8 @@ export PS1="$C_NO$C_DIM$(hr)$C_NO\n$C_USER\u$C_NO$C_HI@\h$C_NO $C_DIM\w$C_NO\n$C
 ## TODO https://unix.stackexchange.com/a/6348
 DISTRO=""
 if [[ "$OSTYPE" == "linux-gnu" ]]; then # linux
-	DISTRO="$(lsb_release -a | grep Description: | sed -e 's/^.*:\W*//')"
+	#DISTRO="$(lsb_release -a | grep Description: | sed -e 's/^.*:\W*//')"
+  DISTRO="hostnamectl"
 elif [[ "$OSTYPE" == "darwin"* ]]; then # macos
   DISTRO="$(sw_vers -productVersion)"
 	DISTRO="MacOS "$DISTRO
@@ -143,6 +144,7 @@ alias rd="rmdir"
 ## ---- HELPER FUNCTIONS ----
 
 alias dir_size="du -sh"
+alias yt-audio-dl="youtube-dl --audio-format best -x" # download youtube audio best quality available (pass the URL)
 alias find_proc="ps aux | percol | awk '{ print $2 }' | echo" # interactively search for process id
 alias hosts="grep -w -i "Host" ~/.ssh/config | sed 's/Host//'" # list all hosts defined in .ssh/config
 alias funcs="typeset -F | grep -v '^declare -f _.*'" # list all user-defined functions
