@@ -79,7 +79,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then # linux
   #DISTRO="\t\t$(hostnamectl | grep "Static hostname:")\n"
   DISTRO="$DISTRO\t\t$(hostnamectl | grep "Operating System")\n"
   DISTRO="$DISTRO\t\t$(hostnamectl | grep "Kernel:")\n"
-  DISTRO="$DISTRO\t\t$(hostnamectl | grep "Architecture:")\n"
+  #DISTRO="$DISTRO\t\t$(hostnamectl | grep "Architecture:")\n"
 	#DISTRO="$(lsb_release -a | grep Description: | sed -e 's/^.*:\W*//')"
 elif [[ "$OSTYPE" == "darwin"* ]]; then # macos
   DISTRO="$(sw_vers -productVersion)"
@@ -89,7 +89,7 @@ fi
 echo -e $ESC_HI"\n"$(hr)
 echo -e $ESC_NO"ʕっ•ᴥ•ʔっ\t"$ESC_HI$(whoami)"@"$(hostname)
 echo -e $(hr)$ESC_NO;
-echo -e "\t\t"$DISTRO
+echo -e $DISTRO
 echo -e "\t\t"$(date)
 echo -e "\t\tstarting bash "${BASH_VERSION%.*}"...\n";
 
