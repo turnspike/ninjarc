@@ -76,8 +76,11 @@ export PS1="$C_NO$C_DIM$(hr)$C_NO\n$C_USER\u$C_NO$C_HI@\h$C_NO $C_DIM\w$C_NO\n$C
 ## TODO https://unix.stackexchange.com/a/6348
 DISTRO=""
 if [[ "$OSTYPE" == "linux-gnu" ]]; then # linux
+  #DISTRO="\t\t$(hostnamectl | grep "Static hostname:")\n"
+  DISTRO="$DISTRO\t\t$(hostnamectl | grep "Operating System")\n"
+  DISTRO="$DISTRO\t\t$(hostnamectl | grep "Kernel:")\n"
+  DISTRO="$DISTRO\t\t$(hostnamectl | grep "Architecture:")\n"
 	#DISTRO="$(lsb_release -a | grep Description: | sed -e 's/^.*:\W*//')"
-  DISTRO=`$(hostnamectl | grep "Operating System:" | sed -e 's/^.*:\W*//')`
 elif [[ "$OSTYPE" == "darwin"* ]]; then # macos
   DISTRO="$(sw_vers -productVersion)"
 	DISTRO="MacOS "$DISTRO
