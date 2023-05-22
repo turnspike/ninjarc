@@ -77,7 +77,7 @@ export PS1="$C_NO$C_DIM$(hr)$C_NO\n$C_USER\u$C_NO$C_HI@\h$C_NO $C_DIM\w$C_NO\n$C
 DISTRO=""
 if [[ "$OSTYPE" == "linux-gnu" ]]; then # linux
 	#DISTRO="$(lsb_release -a | grep Description: | sed -e 's/^.*:\W*//')"
-  DISTRO="hostnamectl"
+  DISTRO=hostnamectl
 elif [[ "$OSTYPE" == "darwin"* ]]; then # macos
   DISTRO="$(sw_vers -productVersion)"
 	DISTRO="MacOS "$DISTRO
